@@ -49,7 +49,7 @@
         "unisharp/laravel-ckeditor": "^4.5",
         "torann/geoip": "^1.0",
         "maatwebsite/excel": "~2.0",
-        "nwidart/laravel-modules": "^1.0",
+        "nwidart/laravel-modules": "^4.0",
         "pragmarx/google2fa-laravel": "^0.1.2",
         "predis/predis": "^1.1",
         "simshaun/recurr": "dev-master",
