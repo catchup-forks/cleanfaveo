@@ -1105,7 +1105,7 @@ return [
     'attachment'                                     => 'Adjunto archivo',
     'internal_note'                                  => 'Nota interna',
     'this_ticket_is_under_banned_user'               => 'Este ticket está bajo usuario baneado',
-    'tickets_sources'                                  => 'Ticket source',
+    'tickets__sources'                                  => 'Ticket source',
     'are_you_sure_to_ban'                            => 'Seguro que vas a banear',
     'whome_do_you_want_to_assign_ticket'             => 'A quién quiere asignar el ticket',
     'are_you_sure_you_want_to_surrender_this_ticket' => 'Está seguro de que desea entregar este ticket',

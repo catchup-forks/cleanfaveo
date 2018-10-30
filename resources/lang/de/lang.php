@@ -745,7 +745,7 @@ return [
     'attachment'                                      => 'Anhang',
     'internal_note'                                   => 'Interne Notiz',
     'this_ticket_is_under_banned_user'                => 'Dieses Ticket befindet sich unter einem gesperrten Benutzer',
-    'tickets_sources'                                   => 'Ticketquelle',
+    'tickets__sources'                                   => 'Ticketquelle',
     'are_you_sure_to_ban'                             => 'Bist du sicher, zu verbieten?',
     'whome_do_you_want_to_assign_ticket'              => 'Wen möchten Sie Ticket zuweisen?',
     'are_you_sure_you_want_to_surrender_this_ticket'  => 'Möchten Sie dieses Ticket wirklich abgeben?t',

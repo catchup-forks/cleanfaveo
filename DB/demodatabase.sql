@@ -1773,10 +1773,10 @@ CREATE TABLE `ticket_attachment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ticket_collaborator`
+-- Table structure for table `tickets__collaborators`
 --
 
-CREATE TABLE `ticket_collaborator` (
+CREATE TABLE `tickets__collaborators` (
   `id` int(10) UNSIGNED NOT NULL,
   `isactive` tinyint(1) NOT NULL,
   `ticket_id` int(10) UNSIGNED DEFAULT NULL,
@@ -2747,9 +2747,9 @@ ALTER TABLE `ticket_attachment`
   ADD KEY `thread_id` (`thread_id`);
 
 --
--- Indexes for table `ticket_collaborator`
+-- Indexes for table `tickets__collaborators`
 --
-ALTER TABLE `ticket_collaborator`
+ALTER TABLE `tickets__collaborators`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ticket_id` (`ticket_id`),
   ADD KEY `user_id` (`user_id`);
@@ -3169,9 +3169,9 @@ ALTER TABLE `tickets`
 ALTER TABLE `ticket_attachment`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `ticket_collaborator`
+-- AUTO_INCREMENT for table `tickets__collaborators`
 --
-ALTER TABLE `ticket_collaborator`
+ALTER TABLE `tickets__collaborators`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `ticket_form_data`
@@ -3374,9 +3374,9 @@ ALTER TABLE `ticket_attachment`
   ADD CONSTRAINT `ticket_attachment_ibfk_1` FOREIGN KEY (`thread_id`) REFERENCES `ticket_thread` (`id`) ON UPDATE NO ACTION;
 
 --
--- Constraints for table `ticket_collaborator`
+-- Constraints for table `tickets__collaborators`
 --
-ALTER TABLE `ticket_collaborator`
+ALTER TABLE `tickets__collaborators`
   ADD CONSTRAINT `ticket_collaborator_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `ticket_collaborator_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE NO ACTION;
 

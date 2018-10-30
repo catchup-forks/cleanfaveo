@@ -416,7 +416,7 @@ class TicketController extends Controller
 
             $ticket->sla = Input::get('tickets__slaplans');
             $ticket->help_topic_id = Input::get('tickets__helptopics');
-            $ticket->source = Input::get('tickets_sources');
+            $ticket->source = Input::get('tickets__sources');
             $ticket->priority_id = Input::get('tickets__priorities');
             $ticket->status = Input::get('status');
             $ticket->save();
@@ -654,12 +654,12 @@ class TicketController extends Controller
             $php_mailer = new PhpMailController();
             $php_mailer->sendmail($from = $php_mailer->mailfrom('1', '0'), $to = ['name' => $email, 'email' => $email], $message = ['subject' => 'Password', 'scenario' => 'registration-notification'], $template_variables = ['user' => $email, 'email_address' => $email, 'user_password' => $password]);
         }
-        $ticket_collaborator = new Ticket_Collaborator();
-        $ticket_collaborator->isactive = 1;
-        $ticket_collaborator->ticket_id = $ticket_id;
-        $ticket_collaborator->user_id = $user->id;
-        $ticket_collaborator->role = 'ccc';
-        $ticket_collaborator->save();
+        $tickets__collaborators = new Ticket_Collaborator();
+        $tickets__collaborators->isactive = 1;
+        $tickets__collaborators->ticket_id = $ticket_id;
+        $tickets__collaborators->user_id = $user->id;
+        $tickets__collaborators->role = 'ccc';
+        $tickets__collaborators->save();
 
         $result = [$user->user_name => $user->email];
 
@@ -677,11 +677,11 @@ class TicketController extends Controller
         $ticketid = Input::get('ticketid');
         $user = new User();
         $user = $user->where('email', $email)->first();
-        $ticket_collaborator = Ticket_Collaborator::where('ticket_id', '=', $ticketid)
+        $tickets__collaborators = Ticket_Collaborator::where('ticket_id', '=', $ticketid)
                 ->where('user_id', $user->id)
                 ->first();
-        if ($ticket_collaborator) {
-            $ticket_collaborator->delete();
+        if ($tickets__collaborators) {
+            $tickets__collaborators->delete();
 
             return 'deleted successfully';
         } else {
@@ -694,21 +694,21 @@ class TicketController extends Controller
         try {
             $ticketid = Input::get('ticket_id');
 
-            $ticket_collaborator = \DB::table('users')
-                    ->join('ticket_collaborator', function ($join) use ($ticketid) {
-                        $join->on('users.id', '=', 'ticket_collaborator.user_id')
-                        ->where('ticket_collaborator.ticket_id', '=', $ticketid);
+            $tickets__collaborators = \DB::table('users')
+                    ->join('tickets__collaborators', function ($join) use ($ticketid) {
+                        $join->on('users.id', '=', 'tickets__collaborators.user_id')
+                        ->where('tickets__collaborators.ticket_id', '=', $ticketid);
                     })
                     ->select('users.email', 'users.user_name')
                     ->get();
-            if (count($ticket_collaborator) > 0) {
-                foreach ($ticket_collaborator as $key => $collaborator) {
+            if (count($tickets__collaborators) > 0) {
+                foreach ($tickets__collaborators as $key => $collaborator) {
                     $collab[$key]['email'] = $collaborator->email;
                     $collab[$key]['user_name'] = $collaborator->user_name;
                     $collab[$key]['avatar'] = $this->avatarUrl($collaborator->email);
                 }
             } else {
-                $collab = $ticket_collaborator;
+                $collab = $tickets__collaborators;
             }
 
             return $collab;

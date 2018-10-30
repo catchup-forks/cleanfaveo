@@ -12,9 +12,9 @@ class AlterTicketSourceTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('tickets_sources', 'css_class')) {
+        if (!Schema::hasColumn('tickets__sources', 'css_class')) {
             Schema::table(
-                'tickets_sources',
+                'tickets__sources',
                 function (Blueprint $table) {
                     $table->string('css_class');
                 }
@@ -29,7 +29,7 @@ class AlterTicketSourceTable extends Migration
      */
     public function down()
     {
-        Schema::table('tickets_sources', function (Blueprint $table) {
+        Schema::table('tickets__sources', function (Blueprint $table) {
             //
         });
     }

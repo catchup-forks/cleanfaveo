@@ -82,11 +82,11 @@ class ApiSettings extends Controller
             $ticketid = $detail->ticket_id;
             $data = $ticket
                     ->join('tickets__threads', function ($join) use ($ticketid) {
-                        $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
-                        ->where('ticket_thread.ticket_id', '=', $ticketid);
+                        $join->on('tickets.id', '=', 'tickets__threads.ticket_id')
+                        ->where('tickets__threads.ticket_id', '=', $ticketid);
                     })
-                    ->join('users', 'ticket_thread.user_id', '=', 'users.id')
-                    ->select('ticket_thread.title', 'ticket_thread.body', 'users.first_name', 'users.last_name', 'users.email', 'ticket_thread.created_at')
+                    ->join('users', 'tickets__threads.user_id', '=', 'users.id')
+                    ->select('tickets__threads.title', 'tickets__threads.body', 'users.first_name', 'users.last_name', 'users.email', 'tickets__threads.created_at')
                     ->get()
                     ->toJson();
             $this->postHook($data);

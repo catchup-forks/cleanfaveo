@@ -12,7 +12,7 @@ class AddForeignKeysToTicketCollaboratorTable extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_collaborator', function (Blueprint $table) {
+        Schema::table('tickets__collaborators', function (Blueprint $table) {
             $table->foreign('ticket_id', 'ticket_collaborator_ibfk_1')->references('id')->on('tickets')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('user_id', 'ticket_collaborator_ibfk_2')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
@@ -25,7 +25,7 @@ class AddForeignKeysToTicketCollaboratorTable extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_collaborator', function (Blueprint $table) {
+        Schema::table('tickets__collaborators', function (Blueprint $table) {
             $table->dropForeign('ticket_collaborator_ibfk_1');
             $table->dropForeign('ticket_collaborator_ibfk_2');
         });

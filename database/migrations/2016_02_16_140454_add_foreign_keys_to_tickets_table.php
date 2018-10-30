@@ -20,7 +20,7 @@ class AddForeignKeysToTicketsTable extends Migration
             $table->foreign('sla', 'tickets_ibfk_5')->references('id')->on('tickets__slaplans')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('help_topic_id', 'tickets_ibfk_6')->references('id')->on('tickets__helptopics')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('status', 'tickets_ibfk_7')->references('id')->on('tickets__statuses')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('source', 'tickets_ibfk_8')->references('id')->on('tickets_sources')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('source', 'tickets_ibfk_8')->references('id')->on('tickets__sources')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('assigned_to', 'tickets_ibfk_9')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }

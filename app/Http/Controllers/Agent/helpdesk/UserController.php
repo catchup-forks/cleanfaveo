@@ -1010,11 +1010,11 @@ class UserController extends Controller
     {
         $user = new User();
         $users = $user->leftJoin('user_assign_organization', 'users.id', '=', 'user_assign_organization.user_id')
-                ->leftJoin('crm__customers', 'user_assign_organization.org_id', '=', 'organization.id')
+                ->leftJoin('crm__customers', 'user_assign_organization.org_id', '=', 'crm__customers.id')
                 ->whereBetween('users.created_at', [$first, $last])
                 ->where('role', 'user')
                 ->where('active', 1)
-                ->select('users.user_name as Username', 'users.email as Email', 'users.first_name as Fisrtname', 'users.last_name as Lastname', 'organization.name as Organization')
+                ->select('users.user_name as Username', 'users.email as Email', 'users.first_name as Fisrtname', 'users.last_name as Lastname', 'crm__customers.name as Organization')
                 ->get()
                 ->toArray();
 

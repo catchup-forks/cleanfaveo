@@ -1050,7 +1050,7 @@ return [
     'attachment'                                      => 'Pièce jointe',
     'internal_note'                                   => 'Note interne',
     'this_ticket_is_under_banned_user'                => 'Ce ticket appartient à un utilisateur banni',
-    'tickets_sources'                                   => 'Source du ticket',
+    'tickets__sources'                                   => 'Source du ticket',
     'are_you_sure_to_ban'                             => 'Êtes-vous sûr de bannir?',
     'whome_do_you_want_to_assign_ticket'              => 'A qui voulez-vous assigner le ticket',
     'are_you_sure_you_want_to_surrender_this_ticket'  => 'Aêts-vous sûr de vouloir abandonner ce ticket',

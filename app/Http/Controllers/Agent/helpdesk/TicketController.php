@@ -455,7 +455,7 @@ class TicketController extends Controller
             return 2;
         } elseif (Input::get('tickets__helptopics') == null) {
             return 3;
-        } elseif (Input::get('tickets_sources') == null) {
+        } elseif (Input::get('tickets__sources') == null) {
             return 4;
         } elseif (Input::get('tickets__priorities') == null) {
             return 5;
@@ -463,7 +463,7 @@ class TicketController extends Controller
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
             $ticket->sla = Input::get('sla_paln');
             $ticket->help_topic_id = Input::get('tickets__helptopics');
-            $ticket->source = Input::get('tickets_sources');
+            $ticket->source = Input::get('tickets__sources');
             $ticket->priority_id = Input::get('tickets__priorities');
             $dept = Help_topic::select('department')->where('id', '=', $ticket->help_topic_id)->first();
             $ticket->dept_id = $dept->department;
@@ -488,13 +488,13 @@ class TicketController extends Controller
     {
         $tickets = Tickets::
                 leftJoin('tickets__threads', function ($join) {
-                    $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
-                        ->whereNotNull('ticket_thread.title');
+                    $join->on('tickets.id', '=', 'tickets__threads.ticket_id')
+                        ->whereNotNull('tickets__threads.title');
                 })
                 ->leftJoin('department', 'tickets.dept_id', '=', 'department.id')
                 ->leftJoin('tickets__helptopics', 'tickets.help_topic_id', '=', 'help_topic.id')
                 ->where('tickets.id', '=', $id)
-                ->select('ticket_thread.title', 'tickets.ticket_number', 'department.name as department', 'help_topic.topic as helptopic')
+                ->select('tickets__threads.title', 'tickets.ticket_number', 'core__departments.name as department', 'tickets__helptopics as helptopic')
                 ->first();
         $ticket = Tickets::where('tickets.id', '=', $id)->first();
         $html = view('themes.default1.agent.helpdesk.ticket.pdf', compact('id', 'ticket', 'tickets'))->render();
@@ -1630,18 +1630,18 @@ class TicketController extends Controller
             return '<div id="alert11" class="alert alert-warning alert-dismissable">'
                     .'<button id="dismiss11" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'
                     .'<i class="icon fa fa-ban"></i>'
-                    .'This Email doesnot exist in the system'
+                    .'This email address does not exist in the system'
                     .'</div>'
                     .'</div>';
         }
-        $ticket_collaborator = Ticket_Collaborator::where('ticket_id', '=', $ticket_id)->where('user_id', '=', $data->id)->first();
-        if (!isset($ticket_collaborator)) {
-            $ticket_collaborator = new Ticket_Collaborator();
-            $ticket_collaborator->isactive = 1;
-            $ticket_collaborator->ticket_id = $ticket_id;
-            $ticket_collaborator->user_id = $data->id;
-            $ticket_collaborator->role = 'ccc';
-            $ticket_collaborator->save();
+        $tickets__collaborators = Ticket_Collaborator::where('ticket_id', '=', $ticket_id)->where('user_id', '=', $data->id)->first();
+        if (!isset($tickets__collaborators)) {
+            $tickets__collaborators = new Ticket_Collaborator();
+            $tickets__collaborators->isactive = 1;
+            $tickets__collaborators->ticket_id = $ticket_id;
+            $tickets__collaborators->user_id = $data->id;
+            $tickets__collaborators->role = 'ccc';
+            $tickets__collaborators->save();
 
             return '<div id="alert11" class="alert alert-dismissable" style="color:#60B23C;background-color:#F2F2F2;"><button id="dismiss11" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i>Success!</h4><h4><i class="icon fa fa-user"></i>'.$data->user_name.'</h4><div id="message-success1">'.$data->email.'</div></div>';
         } else {
@@ -1686,12 +1686,12 @@ class TicketController extends Controller
 
                 $this->PhpMailController->sendmail($from = $this->PhpMailController->mailfrom('1', '0'), $to = ['name' => $name, 'email' => $email], $message = ['subject' => 'Password', 'scenario' => 'registration-notification'], $template_variables = ['user' => $name, 'email_address' => $email, 'user_password' => $password]);
             }
-            $ticket_collaborator = new Ticket_Collaborator();
-            $ticket_collaborator->isactive = 1;
-            $ticket_collaborator->ticket_id = $ticket_id;
-            $ticket_collaborator->user_id = $user->id;
-            $ticket_collaborator->role = 'ccc';
-            $ticket_collaborator->save();
+            $tickets__collaborators = new Ticket_Collaborator();
+            $tickets__collaborators->isactive = 1;
+            $tickets__collaborators->ticket_id = $ticket_id;
+            $tickets__collaborators->user_id = $user->id;
+            $tickets__collaborators->role = 'ccc';
+            $tickets__collaborators->save();
 
             return '<div id="alert11" class="alert alert-dismissable" style="color:#60B23C;background-color:#F2F2F2;"><button id="dismiss11" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-user"></i>'.$user->user_name.'</h4><div id="message-success1">'.$user->email.'</div></div>';
         }
@@ -1705,7 +1705,7 @@ class TicketController extends Controller
     public function userremove()
     {
         $id = Input::get('data1');
-        $ticket_collaborator = Ticket_Collaborator::where('id', '=', $id)->delete();
+        $tickets__collaborators = Ticket_Collaborator::where('id', '=', $id)->delete();
 
         return 1;
     }
@@ -2399,9 +2399,9 @@ class TicketController extends Controller
     {
         try {
             $threads = new Ticket_Thread();
-            $thread = $threads->leftJoin('tickets', 'ticket_thread.ticket_id', '=', 'tickets.id')
-                    ->leftJoin('users', 'ticket_thread.user_id', '=', 'users.id')
-                    ->where('ticket_thread.id', $threadid)
+            $thread = $threads->leftJoin('tickets', 'tickets__threads.ticket_id', '=', 'tickets.id')
+                    ->leftJoin('users', 'tickets__threads.user_id', '=', 'users.id')
+                    ->where('tickets__threads.id', $threadid)
                     ->first();
             //dd($thread);
             if (!$thread) {

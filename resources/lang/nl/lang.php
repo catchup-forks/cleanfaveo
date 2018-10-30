@@ -1112,7 +1112,7 @@ return [
     'attachment'                                     => 'Bijlage',
     'internal_note'                                  => 'Interne notitie',
     'this_ticket_is_under_banned_user'               => 'Dit ticket is van een geblokkeerde gebruiker',
-    'tickets_sources'                                  => 'Ticket aangemaakt',
+    'tickets__sources'                                  => 'Ticket aangemaakt',
     'are_you_sure_to_ban'                            => 'Weet je zeker dat je wil blokkeren',
     'whome_do_you_want_to_assign_ticket'             => 'Aan wie wil je het ticket toewijzen',
     'are_you_sure_you_want_to_surrender_this_ticket' => 'Weet je zeker dat je dit ticket wil opgeven',
