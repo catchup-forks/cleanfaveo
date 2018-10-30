@@ -453,7 +453,7 @@ class TicketController extends Controller
             return 1;
         } elseif (Input::get('sla_paln') == null) {
             return 2;
-        } elseif (Input::get('help_topic') == null) {
+        } elseif (Input::get('tickets__helptopics') == null) {
             return 3;
         } elseif (Input::get('ticket_source') == null) {
             return 4;
@@ -462,7 +462,7 @@ class TicketController extends Controller
         } else {
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
             $ticket->sla = Input::get('sla_paln');
-            $ticket->help_topic_id = Input::get('help_topic');
+            $ticket->help_topic_id = Input::get('tickets__helptopics');
             $ticket->source = Input::get('ticket_source');
             $ticket->priority_id = Input::get('ticket_priority');
             $dept = Help_topic::select('department')->where('id', '=', $ticket->help_topic_id)->first();
@@ -492,7 +492,7 @@ class TicketController extends Controller
                         ->whereNotNull('ticket_thread.title');
                 })
                 ->leftJoin('department', 'tickets.dept_id', '=', 'department.id')
-                ->leftJoin('help_topic', 'tickets.help_topic_id', '=', 'help_topic.id')
+                ->leftJoin('tickets__helptopics', 'tickets.help_topic_id', '=', 'help_topic.id')
                 ->where('tickets.id', '=', $id)
                 ->select('ticket_thread.title', 'tickets.ticket_number', 'department.name as department', 'help_topic.topic as helptopic')
                 ->first();
@@ -1018,9 +1018,9 @@ class TicketController extends Controller
         }
         $ticket->save();
 
-        $sla_plan = Sla_plan::where('id', '=', $sla)->first();
+        $tickets__slaplans = Sla_plan::where('id', '=', $sla)->first();
         $ovdate = $ticket->created_at;
-        $new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period));
+        $new_date = date_add($ovdate, date_interval_create_from_date_string($tickets__slaplans->grace_period));
         $ticket->duedate = $new_date;
         $ticket->save();
 
@@ -1985,7 +1985,7 @@ class TicketController extends Controller
     public function checkLock($id)
     {
         $ticket = DB::table('tickets')->select('id', 'lock_at', 'lock_by')->where('id', '=', $id)->first();
-        $cad = DB::table('settings_ticket')->select('collision_avoid')->where('id', '=', 1)->first();
+        $cad = DB::table('tickets__settings')->select('collision_avoid')->where('id', '=', 1)->first();
         $cad = $cad->collision_avoid; //collision avoid duration defined in system
 
         $to_time = strtotime($ticket->lock_at); //last locking time
@@ -2340,7 +2340,7 @@ class TicketController extends Controller
             } else {
                 $i = 0;
                 foreach ($overdues as $overdue) {
-                    //                $sla_plan = Sla_plan::where('id', '=', $overdue->sla)->first();
+                    //                $tickets__slaplans = Sla_plan::where('id', '=', $overdue->sla)->first();
 
                     $ovadate = $overdue->created_at;
                     $new_date = date_add($ovadate, date_interval_create_from_date_string($workflow->days.' days')).'<br/><br/>';

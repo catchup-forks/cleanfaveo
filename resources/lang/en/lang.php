@@ -125,25 +125,26 @@ return [
       |  Emails Create Page
       |--------------------------------------
      */
-    'emails'                                                                           => 'Emails',
+    'emails'                                                                           => 'Mailboxes',
+    'mailboxes'                                                                        => 'Mailboxes',
     'incoming_emails'                                                                  => 'Incoming emails',
-    'reuired_authentication'                                                           => 'Reuired authentication',
+    'reuired_authentication'                                                           => 'Required authentication',
     'fetching_email_via_imap'                                                          => 'Fetching email via IMAP',
-    'create_email'                                                                     => 'Create email',
-    'email_address'                                                                    => 'Email address',
-    'email_name'                                                                       => 'Email name',
-    'help_topic'                                                                       => 'Help topic',
+    'create_email'                                                                     => 'Create mailbox',
+    'email_address'                                                                    => 'Mailbox address',
+    'email_name'                                                                       => 'Mailbox name',
+    'tickets__helptopics'                                                                       => 'Default Helptopic',
     'auto_response'                                                                    => 'Auto response',
     'host_name'                                                                        => 'Host name',
     'port_number'                                                                      => 'Port number',
-    'mail_box_protocol'                                                                => 'Mail Box Protocol',
+    'mail_box_protocol'                                                                => 'MailBox Protocol',
     'authentication_required'                                                          => 'Authentication required',
     'yes'                                                                              => 'Yes',
     'no'                                                                               => 'No',
     'header_spoofing'                                                                  => 'Header spoofing',
-    'allow_for_this_email'                                                             => 'Allow for this email',
+    'allow_for_this_email'                                                             => 'Allow for this mailbox',
     'imap_config'                                                                      => 'IMAP configuration',
-    'email_information_and_settings'                                                   => 'Email information and settings',
+    'email_information_and_settings'                                                   => 'Mailboxes information and settings',
     'incoming_email_information'                                                       => 'Incoming email information',
     'outgoing_email_information'                                                       => 'Outgoing email information',
     'new_ticket_settings'                                                              => 'New ticket settings',
@@ -151,18 +152,18 @@ return [
     'fetching_protocol'                                                                => 'Fetching protocol',
     'transfer_protocol'                                                                => 'Transfer protocol',
     'from_name'                                                                        => 'From name',
-    'add_an_email'                                                                     => 'Add an email',
-    'edit_an_email'                                                                    => 'Edit an email',
-    'disable_for_this_email_address'                                                   => 'Disable for this email address',
+    'add_an_email'                                                                     => 'Add a mailbox',
+    'edit_an_email'                                                                    => 'Edit a mailbox',
+    'disable_for_this_email_address'                                                   => 'Disable for this mailbox address',
     'validate_certificates_from_tls_or_ssl_server'                                     => 'Validate Certificates from TLS/SSL server',
     'authentication'                                                                   => 'Authentication',
-    'incoming_email_connection_failed_please_check_email_credentials_or_imap_settings' => 'Incoming email connection failed! Please check email credentials or Imap Settings',
+    'incoming_email_connection_failed_please_check_email_credentials_or_imap_settings' => 'Incoming email connection failed! Please check mailbox credentials or Imap Settings',
     'outgoing_email_connection_failed'                                                 => 'Outgoing email connection failed',
-    'you_cannot_delete_system_default_email'                                           => 'You cannot delete system default email',
-    'email_deleted_sucessfully'                                                        => 'Email deleted sucessfully',
-    'email_can_not_delete'                                                             => 'Email can not delete',
+    'you_cannot_delete_system_default_email'                                           => 'You cannot delete system default mailbox',
+    'email_deleted_sucessfully'                                                        => 'Mailbox deleted sucessfully',
+    'email_can_not_delete'                                                             => 'Mailbox can not delete',
     'outgoing_email_failed'                                                            => 'Outgoing email failed',
-    'system-email-not-configured'                                                      => 'System could not send emails to users as it does not have the email configured to send outgoing mails. Please contact and report system admin.',
+    'system-email-not-configured'                                                      => 'System could not send emails to users as it does not have the mailbox configured to send outgoing mails. Please contact and report system admin.',
     /*
       |--------------------------------------
       |  Ban Emails Create Page
@@ -171,13 +172,13 @@ return [
     'ban_lists'                        => 'Ban lists',
     'ban_email'                        => 'Ban email',
     'ban_status'                       => 'Ban status',
-    'list_of_banned_emails'            => 'List of banned emails',
-    'edit_banned_email'                => 'Edit banned email',
-    'create_a_banned_email'            => 'Create a banned email',
-    'email_banned_sucessfully'         => 'Email banned sucessfully',
-    'email_can_not_ban'                => 'Email can not ban',
-    'banned_email_updated_sucessfully' => 'Banned email updated sucessfully',
-    'banned_email_not_updated'         => 'Banned email not updated',
+    'list_of_banned_emails'            => 'List of banned email addresses',
+    'edit_banned_email'                => 'Edit email addresses',
+    'create_a_banned_email'            => 'Create a banned  email address',
+    'email_banned_sucessfully'         => 'Email address banned sucessfully',
+    'email_can_not_ban'                => 'Email address can not ban',
+    'banned_email_updated_sucessfully' => 'Banned email addres updated sucessfully',
+    'banned_email_not_updated'         => 'Banned email address not updated',
     'banned_removed_sucessfully'       => 'Banned removed sucessfully',
     /*
       |--------------------------------------
@@ -296,8 +297,8 @@ return [
     'system_can_not_updated'                                     => 'System can not updated',
     'ticket_updated_successfully'                                => 'Ticket updated successfully',
     'ticket_can_not_updated'                                     => 'Ticket can not updated',
-    'email_updated_successfully'                                 => 'Email updated successfully',
-    'email_can_not_updated'                                      => 'Email can not updated',
+    'email_updated_successfully'                                 => 'Mailbox updated successfully',
+    'email_can_not_updated'                                      => 'Mailbox can not updated',
     'select_a_time_zone'                                         => 'Select a time zone',
     'select_a_date_time_format'                                  => 'Select a date time format',
     'Ticket-has-been-created-successfully-your-ticket-number-is' => 'Ticket has been created successfully, your ticket number is',
@@ -319,11 +320,11 @@ return [
       |   Email Settings Page
       |--------------------------------------
      */
-    'email'                               => 'Email',
-    'email-settings'                      => 'Email settings',
+    'email'                               => 'Mailboxes',
+    'email-settings'                      => 'Mailbox settings',
     'default_template'                    => 'Default template set:',
-    'default_system_email'                => 'Default system email:',
-    'default_alert_email'                 => 'Default alert email:',
+    'default_system_email'                => 'Default system mailbox:',
+    'default_alert_email'                 => 'Default alert mailbox:',
     'admin_email'                         => 'Admins email address:',
     'email_fetch'                         => 'Email fetching:',
     'enable'                              => 'Enable',
@@ -404,8 +405,8 @@ return [
       |   Auto-Response Settings Page
       |--------------------------------------
      */
-    'auto_responce'                         => 'Auto response',
-    'auto_responce-settings'                => 'Auto response settings',
+    'auto_response'                         => 'Auto responses',
+    'auto_response-settings'                => 'Auto response settings',
     'new_ticket'                            => 'New ticket',
     'new_ticket_by_agent'                   => 'New ticket by agent',
     'new_message'                           => 'New message',
@@ -743,7 +744,7 @@ return [
     'staffs'             => 'Staff',
     'name'               => 'Name',
     'user_name'          => 'User name',
-    'status'             => 'Status',
+    'status'             => 'Statuses',
     'group'              => 'Group',
     'department'         => 'Department',
     'created'            => 'Created',
@@ -755,7 +756,7 @@ return [
     'edit'               => 'Edit',
     'departments'        => 'Departments',
     'groups'             => 'Groups',
-    'time_zones'         => 'Time zones',
+    'time_zones'         => 'Timezones',
     /*
       |--------------------------------------
       |  Staff Create Page
@@ -774,7 +775,7 @@ return [
     'locked'                                   => 'Locked',
     'assigned_group'                           => 'Assigned group',
     'primary_department'                       => 'Primary department',
-    'agent_time_zone'                          => 'Agent time zone',
+    'agent_time_zone'                          => 'Agent timezone',
     'day_light_saving'                         => 'Day light saving',
     'limit_access'                             => 'Limit access',
     'directory_listing'                        => 'Directory listing',
@@ -929,7 +930,7 @@ return [
     'loading'            => 'Loading',
     'ratings'            => 'Ratings',
     'please_rate'        => 'Please rate:',
-    'ticket_ratings'     => 'TICKET RATING',
+    'ticket_ratings'     => 'TICKET RATINGZ',
     /*
       |-----------------------------------------------
       |  Ticket
@@ -1076,7 +1077,7 @@ return [
     'high'                                           => 'High',
     'medium'                                         => 'Medium',
     'low'                                            => 'Low',
-    'sla_plan'                                       => 'SLA plan',
+    'tickets__slaplans'                                       => 'SLA plan',
     'created_date'                                   => 'Created date',
     'due_date'                                       => 'Due date',
     'last_response'                                  => 'Last response',
@@ -1146,7 +1147,7 @@ return [
       |Tools Page
       |------------------------------------------------
      */
-    'canned_response'           => 'Canned response',
+    'canned_response'           => 'Canned responses',
     'create_canned_response'    => 'Create canned response',
     'surrender'                 => 'Surrender',
     'added_successfully'        => 'Added successfully',
@@ -1203,7 +1204,7 @@ return [
     'close-msg3'                                          => 'Select a status to choose on closing the ticket.',
     'close-msg4'                                          => 'Send email to user on auto-closing the ticket?',
     'edit_status'                                         => 'Edit status',
-    'list_of_status'                                      => 'List of status',
+    'list_of_status'                                      => 'List of statuses',
     'status_settings'                                     => 'Status settings',
     'icon_class'                                          => 'Icon class',
     'close_ticket_workflow'                               => 'Close ticket workflow',
@@ -1477,7 +1478,7 @@ return [
      * Ticket Priority
      * -----------------------------------------------------------------------------------
      */
-    'ticket_priority'                                           => 'Ticket priority',
+    'ticket_priority'                                           => 'Ticket priorities',
     'priority'                                                  => 'Priority',
     'priority_desc'                                             => 'Priority description',
     'priority_urgency'                                          => 'Priority urgency',

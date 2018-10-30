@@ -12,7 +12,7 @@ class CreateCommonSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('common_settings', function (Blueprint $table) {
+        Schema::create('core__settings_common', function (Blueprint $table) {
             $table->increments('id');
             $table->string('option_name');
             $table->string('option_value');
@@ -29,6 +29,6 @@ class CreateCommonSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('common_settings');
+        Schema::drop('core__settings_common');
     }
 }

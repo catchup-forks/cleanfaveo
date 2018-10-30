@@ -100,7 +100,7 @@ class="active"
     <td><a href="{{route('template.list',[$dir,$directory])}}"><?php $parts = explode('.',$dir); $names  = $parts[0]; $name = str_replace('_', ' ', $names);$name1 = ucfirst($name); echo $name1?></a></td>
     <!-- template Status : if status==1 active -->
     <!-- Deleting Fields -->
-                <?php $status = DB::table('settings_email')->first();  ?>
+                <?php $status = DB::table('core__settings_mailboxes')->first();  ?>
                 <td><input type="radio" disabled="disabled" value="Active"<?php echo ($status->template == $dir)?'checked':'' ?> /></td>
                 <td>
                   {!! link_to_route('active.set','Activate This Set',[$dir],['class'=>'btn btn-success btn-xs']) !!} 

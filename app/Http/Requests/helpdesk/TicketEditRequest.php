@@ -31,7 +31,7 @@ class TicketEditRequest extends Request
         return [
                 // 'subject' => 'required',
                 // 'sla_paln' => 'required',
-                // 'help_topic' => 'required',
+                // 'tickets__helptopics' => 'required',
                 // 'ticket_source' => 'required',
                 // 'ticket_priority' => 'required',
         ];

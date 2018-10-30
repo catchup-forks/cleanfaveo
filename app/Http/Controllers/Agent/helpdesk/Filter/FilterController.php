@@ -428,7 +428,7 @@ class FilterController extends Controller
         } else {
             $departmentTickets = $this->userCanSeeDepartmentTicket($value);
             if ($departmentTickets[0]) {
-                $table = $table->leftJoin('department as dep', 'tickets.dept_id', '=', 'dep.id')
+                $table = $table->leftJoin('core__departments as dep', 'tickets.dept_id', '=', 'dep.id')
                         ->whereIn('dep.id', $departmentTickets[1]);
             } else {
                 $table = $table->where('tickets.id', '=', null);
@@ -931,7 +931,7 @@ class FilterController extends Controller
      */
     public function filterBySla($value, $table)
     {
-        $query = DB::table('sla_plan');
+        $query = DB::table('tickets__slaplans');
         foreach ($value as $sla) {
             $query->orWhere('name', '=', $sla);
         }

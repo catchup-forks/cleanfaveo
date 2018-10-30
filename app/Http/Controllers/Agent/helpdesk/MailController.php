@@ -40,11 +40,11 @@ class MailController extends Controller
      *
      * @return type
      */
-    public function readmails(Emails $emails, Email $settings_email, System $system, Ticket $ticket)
+    public function readmails(Emails $emails, Email $core__settings_mailboxes, System $system, Ticket $ticket)
     {
         //dd($emails);
-        if ($settings_email->first()->email_fetching == 1) {
-            if ($settings_email->first()->all_emails == 1) {
+        if ($core__settings_mailboxes->first()->email_fetching == 1) {
+            if ($core__settings_mailboxes->first()->all_emails == 1) {
                 $email = $emails->get();
                 if ($email->count() > 0) {
                     foreach ($email as $e_mail) {
@@ -132,7 +132,7 @@ class MailController extends Controller
         $helptopic = $this->helptopic($email);
         $help = Help_topic::where('id', '=', $helptopic)->first();
         if ($help) {
-            $sla = $help->sla_plan;
+            $sla = $help->tickets__slaplans;
         }
         if (!$sla) {
             $sla = $this->ticketController()->getSystemDefaultSla();

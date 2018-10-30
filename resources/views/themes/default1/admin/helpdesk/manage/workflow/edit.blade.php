@@ -362,13 +362,13 @@ class="active"
                                                 } elseif ($workflow_action->condition == 'sla') {
                                                     $sla_plans = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->get();
                                                     $var = "<select name='action[" . $i . "][b]' class='form-control' required>";
-                                                    foreach ($sla_plans as $sla_plan) {
-                                                        if ($workflow_action->action == $sla_plan->id) {
+                                                    foreach ($sla_plans as $tickets__slaplans) {
+                                                        if ($workflow_action->action == $tickets__slaplans->id) {
                                                             $sla = "selected";
                                                         } else {
                                                             $sla = "";
                                                         }
-                                                        $var .= "<option value='" . $sla_plan->id . "' " . $sla . ">" . $sla_plan->grace_period . "</option>";
+                                                        $var .= "<option value='" . $tickets__slaplans->id . "' " . $sla . ">" . $tickets__slaplans->grace_period . "</option>";
                                                     }
                                                     $var .= "</select>";
                                                     echo $var;

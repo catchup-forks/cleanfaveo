@@ -100,8 +100,8 @@ class="active"
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 form-group {{ $errors->has('organization') ? 'has-error' : '' }}">
-                {!! Form::label('organization',Lang::get('lang.organization')) !!}
+            <div class="col-xs-6 form-group {{ $errors->has('crm__customers') ? 'has-error' : '' }}">
+                {!! Form::label('crm__customers',Lang::get('lang.organization')) !!}
                 {!! Form::select('org_id',[''=>'Select','Organization'=>$org],null,['class' => 'form-control','id'=>'org']) !!}
                 
             </div>

@@ -148,9 +148,9 @@ class = "active"
                 {!! Form::hidden('Phone',Auth::user()->phone_number,['class' => 'form-control']) !!}
  
            @endif
-            <div class="col-md-12 form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-                {!! Form::label('help_topic', Lang::get('lang.choose_a_help_topic')) !!} 
-                {!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}
+            <div class="col-md-12 form-group {{ $errors->has('tickets__helptopics') ? 'has-error' : '' }}">
+                {!! Form::label('tickets__helptopics', Lang::get('lang.choose_a_help_topic')) !!} 
+                {!! $errors->first('tickets__helptopics', '<spam class="help-block">:message</spam>') !!}
                 <?php
                 $forms = App\Model\helpdesk\Form\Forms::get();
                 $helptopic = App\Model\helpdesk\Manage\Help_topic::where('status', '=', 1)->get();

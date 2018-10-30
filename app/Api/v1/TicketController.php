@@ -414,8 +414,8 @@ class TicketController extends Controller
         try {
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
 
-            $ticket->sla = Input::get('sla_plan');
-            $ticket->help_topic_id = Input::get('help_topic');
+            $ticket->sla = Input::get('tickets__slaplans');
+            $ticket->help_topic_id = Input::get('tickets__helptopics');
             $ticket->source = Input::get('ticket_source');
             $ticket->priority_id = Input::get('ticket_priority');
             $ticket->status = Input::get('status');

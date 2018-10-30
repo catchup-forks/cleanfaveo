@@ -376,8 +376,8 @@ class WorkflowController extends Controller
     {
         $sla_plans = Sla_plan::where('status', '=', 1)->get();
         $var = "<select name='action[".$id."][b]' class='form-control' required>";
-        foreach ($sla_plans as $sla_plan) {
-            $var .= "<option value='".$sla_plan->id."'>".$sla_plan->grace_period.'</option>';
+        foreach ($sla_plans as $tickets__slaplans) {
+            $var .= "<option value='".$tickets__slaplans->id."'>".$tickets__slaplans->grace_period.'</option>';
         }
         $var .= '</select>';
 

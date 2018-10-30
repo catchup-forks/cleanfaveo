@@ -12,7 +12,7 @@ class CreateSlaPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('sla_plan', function (Blueprint $table) {
+        Schema::create('tickets__slaplans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('grace_period');
@@ -31,6 +31,6 @@ class CreateSlaPlanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sla_plan');
+        Schema::drop('tickets__slaplans');
     }
 }

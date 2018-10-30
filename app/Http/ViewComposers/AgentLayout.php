@@ -85,7 +85,7 @@ class AgentLayout
             $tickets = $tickets->where('tickets.dept_id', '=', \Auth::user()->primary_dpt);
         }
         $tickets = $tickets
-                ->leftJoin('department as dep', 'tickets.dept_id', '=', 'dep.id')
+                ->leftJoin('core__departments as dep', 'tickets.dept_id', '=', 'dep.id')
                 ->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
                 ->select('dep.name as name', 'ticket_status.name as status', \DB::raw('COUNT(ticket_status.name) as count'))
                 ->groupBy('dep.name', 'ticket_status.name')

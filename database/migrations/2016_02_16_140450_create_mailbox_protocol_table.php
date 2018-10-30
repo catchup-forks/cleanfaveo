@@ -12,7 +12,7 @@ class CreateMailboxProtocolTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox_protocol', function (Blueprint $table) {
+        Schema::create('mail__protocols', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('value', 50)->nullable();
@@ -26,6 +26,6 @@ class CreateMailboxProtocolTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mailbox_protocol');
+        Schema::drop('mail__protocols');
     }
 }

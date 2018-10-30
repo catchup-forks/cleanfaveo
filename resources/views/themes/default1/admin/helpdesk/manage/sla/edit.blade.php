@@ -16,7 +16,7 @@ class="active"
 @stop
 <!-- header -->
 @section('PageHeader')
-<h1>{!! Lang::get('lang.sla_plan') !!}</h1>
+<h1>{!! Lang::get('lang.tickets__slaplans') !!}</h1>
 @stop
 <!-- /header -->
 <!-- breadcrumbs -->

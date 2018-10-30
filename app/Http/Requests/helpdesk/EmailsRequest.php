@@ -33,7 +33,7 @@ class EmailsRequest extends Request
             'email_name'    => 'required',
             // 'department' => 'required',
             // 'priority' => 'required',
-            // 'help_topic' => 'required',
+            // 'tickets__helptopics' => 'required',
             // 'imap_config' => 'required',
             'password' => 'required|min:6',
             // 'user_name' => 'required',
@@ -41,7 +41,7 @@ class EmailsRequest extends Request
             // 'sending_port' => 'required',
 //            'fetching_host'    => 'required',
 //            'fetching_port'    => 'required',
-//            'mailbox_protocol' => 'required',
+//            'mail__protocols' => 'required',
         ];
     }
 }

@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class Department extends BaseModel
 {
-    protected $table = 'department';
+    protected $table = 'core__departments';
     protected $fillable = [
         'name', 'type', 'sla', 'manager', 'ticket_assignment', 'outgoing_email',
         'template_set', 'auto_ticket_response', 'auto_message_response',

@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `field_values` (
 -- ------------------------------------------------------------
 
 --
--- Update values in table `settings_ticket`
+-- Update values in table `tickets__settings`
 --
-UPDATE `settings_ticket` SET `num_format` = '$$$$-####-####', `num_sequence` = 'sequence' WHERE `id` = 1;
+UPDATE `tickets__settings` SET `num_format` = '$$$$-####-####', `num_sequence` = 'sequence' WHERE `id` = 1;
 
 -- --------------------------------------------------------------------

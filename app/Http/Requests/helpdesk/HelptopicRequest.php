@@ -34,7 +34,7 @@ class HelptopicRequest extends Request
             // 'custom_form' => 'required',
             'department' => 'required',
             'priority'   => 'required',
-            'sla_plan'   => 'required',
+            'tickets__slaplans'   => 'required',
                 // 'auto_assign' => 'required',
         ];
     }

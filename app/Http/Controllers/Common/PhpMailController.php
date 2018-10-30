@@ -130,7 +130,7 @@ class PhpMailController extends Controller
         $email_address = $this->checkElement('email_address', $template_variables);
         $user = $this->checkElement('user', $template_variables);
 
-        $status = \DB::table('settings_email')->first();
+        $status = \DB::table('core__settings_mailboxes')->first();
 
         $template = TemplateType::where('name', '=', $template_type)->first();
 
@@ -278,7 +278,7 @@ class PhpMailController extends Controller
         $short = 'database';
         $field = [
             'driver' => 'database',
-            'table'  => 'jobs',
+            'table'  => 'core__cronjobs',
             'queue'  => 'default',
             'expire' => 60,
         ];

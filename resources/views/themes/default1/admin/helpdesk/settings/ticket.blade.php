@@ -67,8 +67,8 @@ class="active"
             @if($errors->first('sla'))
             <li class="error-message-padding">{!! $errors->first('sla', ':message') !!}</li>
             @endif
-            @if($errors->first('help_topic'))
-            <li class="error-message-padding">{!! $errors->first('help_topic', ':message') !!}</li>
+            @if($errors->first('tickets__helptopics'))
+            <li class="error-message-padding">{!! $errors->first('tickets__helptopics', ':message') !!}</li>
             @endif
             @if($errors->first('collision_avoid'))
             <li class="error-message-padding">{!! $errors->first('collision_avoid', ':message') !!}</li>
@@ -103,9 +103,9 @@ class="active"
             </div> -->
             <!-- Default Help Topic:  Dropdowm from Help topic table	 -->
             <!-- <div class="col-md-4">
-                <div class="form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-                    {!! Form::label('help_topic',Lang::get('lang.default_help_topic')) !!}
-                    {!!Form::select('help_topic', $topics->pluck('topic','id'),null,['class' => 'form-control']) !!}
+                <div class="form-group {{ $errors->has('tickets__helptopics') ? 'has-error' : '' }}">
+                    {!! Form::label('tickets__helptopics',Lang::get('lang.default_help_topic')) !!}
+                    {!!Form::select('tickets__helptopics', $topics->pluck('topic','id'),null,['class' => 'form-control']) !!}
                 </div>
             </div>
             --><!-- Agent Collision Avoidance Duration: text-number   -minutes  -->
@@ -121,8 +121,8 @@ class="active"
                 </div> 
             </div> 
             <div class="col-md-6">
-                <div class="form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-                    {!! Form::label('help_topic',Lang::get('lang.lock_ticket_frequency')) !!}
+                <div class="form-group {{ $errors->has('tickets__helptopics') ? 'has-error' : '' }}">
+                    {!! Form::label('tickets__helptopics',Lang::get('lang.lock_ticket_frequency')) !!}
 
                     <select name='lock_ticket_frequency' class="form-control">
                         <option @if($tickets->lock_ticket_frequency == null) selected="true" @endif value="0">{!! Lang::get('lang.no')!!}</option>

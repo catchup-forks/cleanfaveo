@@ -17,9 +17,9 @@ foreach ($depts as $dept) {
 
 	$i = 0;
 	foreach ($overdues as $overdue) {
-		$sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
+		$tickets__slaplans = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
 		$ovdate = $overdue->created_at;
-		$new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period)).'<br/><br/>';
+		$new_date = date_add($ovdate, date_interval_create_from_date_string($tickets__slaplans->grace_period)).'<br/><br/>';
 		if(date('Y-m-d H:i:s') > $new_date){
 			$i++;
 		}
@@ -238,9 +238,9 @@ foreach ($depts as $dept) {
 
 	$i = 0;
 	foreach ($overdues as $overdue) {
-		$sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
+		$tickets__slaplans = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
 		$ovdate = $overdue->created_at;
-		$new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period)).'<br/><br/>';
+		$new_date = date_add($ovdate, date_interval_create_from_date_string($tickets__slaplans->grace_period)).'<br/><br/>';
 		if(date('Y-m-d H:i:s') > $new_date){
 			$i++;
 		}
@@ -517,9 +517,9 @@ foreach ($depts as $dept) {
 
    $i = 0;
    foreach ($overdues as $overdue) {
-      $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
+      $tickets__slaplans = App\Model\helpdesk\Manage\Sla_plan::where('id','=',$overdue->sla)->first();
       $ovdate = $overdue->created_at;
-      $new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period)).'<br/><br/>';
+      $new_date = date_add($ovdate, date_interval_create_from_date_string($tickets__slaplans->grace_period)).'<br/><br/>';
       if(date('Y-m-d H:i:s') > $new_date){
          $i++;
       }

@@ -67,8 +67,8 @@ function isAsset()
 function itilEnabled()
 {
     $check = false;
-    if (\Schema::hasTable('common_settings')) {
-        $settings = \DB::table('common_settings')->where('option_name', 'itil')->first();
+    if (\Schema::hasTable('core__settings_common')) {
+        $settings = \DB::table('core__settings_common')->where('option_name', 'itil')->first();
         if ($settings && $settings->status == 1) {
             $check = true;
         }
@@ -80,8 +80,8 @@ function itilEnabled()
 function isBill()
 {
     $check = false;
-    if (\Schema::hasTable('common_settings')) {
-        $settings = \DB::table('common_settings')->where('option_name', 'bill')->first();
+    if (\Schema::hasTable('core__settings_common')) {
+        $settings = \DB::table('core__settings_common')->where('option_name', 'bill')->first();
         if ($settings && $settings->status == 1) {
             $check = true;
         }

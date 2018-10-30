@@ -94,7 +94,7 @@ return [
     'create_email'                   => 'E-Mail erstellen',
     'email_address'                  => 'E-Mail-Addresse',
     'email_name'                     => 'E-Mail-Name',
-    'help_topic'                     => 'Hilfethema',
+    'tickets__helptopics'                     => 'Hilfethema',
     'auto_response'                  => 'Automatische Antwort',
     'host_name'                      => 'Hostname',
     'port_number'                    => 'Portnummer',
@@ -298,7 +298,7 @@ return [
       |   Auto-Response Settings Page
       |--------------------------------------
      */
-    'auto_responce'                 => 'Automatische Antwort',
+    'auto_response'                 => 'Automatische Antwort',
     'new_ticket'                    => 'Neues Ticket',
     'new_ticket_by_agent'           => 'Neues Ticket vom Agenten',
     'new_message'                   => 'Neue Nachricht',
@@ -733,7 +733,7 @@ return [
     'high'                                            => 'Hoch',
     'medium'                                          => 'Mittel',
     'low'                                             => 'Niedrig',
-    'sla_plan'                                        => 'SLA Plan',
+    'tickets__slaplans'                                        => 'SLA Plan',
     'created_date'                                    => 'Erstellungsdatum',
     'due_date'                                        => 'Fälligkeitsdatum',
     'last_response'                                   => 'Letzte Antwort',

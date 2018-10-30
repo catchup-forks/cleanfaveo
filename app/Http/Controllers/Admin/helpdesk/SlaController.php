@@ -103,7 +103,7 @@ class SlaController extends Controller
             /* Direct to edit page along values of perticular field using Id */
             $slas = Sla_plan::whereId($id)->first();
             $slas->get();
-            $sla = \DB::table('settings_ticket')->select('sla')->where('id', '=', 1)->first();
+            $sla = \DB::table('tickets__settings')->select('sla')->where('id', '=', 1)->first();
 
             return view('themes.default1.admin.helpdesk.manage.sla.edit', compact('slas', 'sla'));
         } catch (Exception $e) {
@@ -134,7 +134,7 @@ class SlaController extends Controller
             $slas->save();
             /* redirect to Index page with Success Message */
             if ($request->input('sys_sla') == 'on') {
-                \DB::table('settings_ticket')
+                \DB::table('tickets__settings')
                      ->where('id', '=', 1)
                      ->update(['sla' => $id]);
             }
@@ -182,7 +182,7 @@ class SlaController extends Controller
             } else {
                 $dept = '';
             }
-            $topic = DB::table('help_topic')->where('sla_plan', '=', $id)->update(['sla_plan' => $default_sla->sla]);
+            $topic = DB::table('tickets__helptopics')->where('tickets__slaplans', '=', $id)->update(['tickets__slaplans' => $default_sla->sla]);
             if ($topic > 0) {
                 if ($topic > 1) {
                     $text_topic = 'Emails';

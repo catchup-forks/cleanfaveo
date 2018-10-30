@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class CommonSettings extends BaseModel
 {
-    protected $table = 'common_settings';
+    protected $table = 'core__settings_common';
     protected $fillable = [
         'status', 'option_name', 'option_value', 'optional_field', 'created_at', 'updated_at',
     ];

@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS `field_values` (
 -- ------------------------------------------------------------
 
 --  
--- Update values in table `settings_ticket`
+-- Update values in table `tickets__settings`
 --  
-UPDATE `settings_ticket` SET `num_format` = '$$$$-####-####', `num_sequence` = 'sequence' WHERE `id` = 1;
+UPDATE `tickets__settings` SET `num_format` = '$$$$-####-####', `num_sequence` = 'sequence' WHERE `id` = 1;
 
 -- --------------------------------------------------------------------
 -- -----------------------------------------------------------
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `conditions` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `failed_jobs`
+-- Table structure for table `core__failedjobs`
 -- 
 
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE IF NOT EXISTS `failed_jobs` (
+DROP TABLE IF EXISTS `core__failedjobs`;
+CREATE TABLE IF NOT EXISTS `core__failedjobs` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8_unicode_ci NOT NULL,
   `queue` text COLLATE utf8_unicode_ci NOT NULL,
@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `faveo_mails`
+-- Table structure for table `faveo_mailboxes`
 -- 
 
-DROP TABLE IF EXISTS `faveo_mails`;
-CREATE TABLE IF NOT EXISTS `faveo_mails` (
+DROP TABLE IF EXISTS `faveo_mailboxes`;
+CREATE TABLE IF NOT EXISTS `faveo_mailboxes` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `email_id` int(11) NOT NULL,
   `drive` varchar(255) COLLATE utf8_unicode_ci NOT NULL,

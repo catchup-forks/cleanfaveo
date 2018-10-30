@@ -294,7 +294,7 @@ class UnAuthController extends Controller
             } else {
                 $i = 0;
                 foreach ($overdues as $overdue) {
-                    //                $sla_plan = Sla_plan::where('id', '=', $overdue->sla)->first();
+                    //                $tickets__slaplans = Sla_plan::where('id', '=', $overdue->sla)->first();
 
                     $ovadate = $overdue->created_at;
                     $new_date = date_add($ovadate, date_interval_create_from_date_string($workflow->days.' days')).'<br/><br/>';

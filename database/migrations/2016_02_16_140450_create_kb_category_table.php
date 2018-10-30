@@ -12,7 +12,7 @@ class CreateKbCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_category', function (Blueprint $table) {
+        Schema::create('kb__categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
@@ -30,6 +30,6 @@ class CreateKbCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_category');
+        Schema::drop('kb__categories');
     }
 }

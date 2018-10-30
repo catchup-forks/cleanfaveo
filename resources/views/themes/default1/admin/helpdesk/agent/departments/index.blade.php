@@ -54,7 +54,7 @@ class="active"
             <tr>
                 <th>{{Lang::get('lang.name')}}</th>
                 <th>{{Lang::get('lang.type')}}</th>
-                <th>{{Lang::get('lang.sla_plan')}}</th>
+                <th>{{Lang::get('lang.tickets__slaplans')}}</th>
                 <th>{{Lang::get('lang.department_manager')}}</th>
                 <th>{{Lang::get('lang.action')}}</th>
             </tr>

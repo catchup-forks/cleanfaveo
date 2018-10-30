@@ -165,9 +165,9 @@ class="active"
                 <div class="col-md-3">
                     <!-- sla plan -->
                     <div class="form-group">
-                        <label>{!! Lang::get('lang.sla_plan') !!}:</label>
-                        <?php $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->select('grace_period', 'id')->get(); ?>
-                        {!! Form::select('sla', ['SLA'=>$sla_plan->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
+                        <label>{!! Lang::get('lang.tickets__slaplans') !!}:</label>
+                        <?php $tickets__slaplans = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->select('grace_period', 'id')->get(); ?>
+                        {!! Form::select('sla', ['SLA'=>$tickets__slaplans->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
                     </div>
                 </div>
                 <div class="col-md-3">

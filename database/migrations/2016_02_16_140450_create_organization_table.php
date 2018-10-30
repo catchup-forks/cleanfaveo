@@ -12,7 +12,7 @@ class CreateOrganizationTable extends Migration
      */
     public function up()
     {
-        Schema::create('organization', function (Blueprint $table) {
+        Schema::create('crm__customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('phone');
@@ -31,6 +31,6 @@ class CreateOrganizationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('organization');
+        Schema::drop('crm__customers');
     }
 }

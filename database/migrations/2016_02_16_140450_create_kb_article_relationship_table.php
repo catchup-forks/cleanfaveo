@@ -12,7 +12,7 @@ class CreateKbArticleRelationshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_article_relationship', function (Blueprint $table) {
+        Schema::create('kb__articles_relationship', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('article_id')->unsigned()->index('article_relationship_article_id_foreign');
             $table->integer('category_id')->unsigned()->index('article_relationship_category_id_foreign');
@@ -27,6 +27,6 @@ class CreateKbArticleRelationshipTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_article_relationship');
+        Schema::drop('kb__articles_relationship');
     }
 }

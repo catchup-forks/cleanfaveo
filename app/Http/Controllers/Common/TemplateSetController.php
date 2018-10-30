@@ -86,7 +86,7 @@ class TemplateSetController extends Controller
             } else {
                 $ratName = $id;
             }
-            \DB::table('settings_email')->update(['template' => $ratName]);
+            \DB::table('core__settings_mailboxes')->update(['template' => $ratName]);
 
             return \Redirect::back()->with('success', Lang::get('lang.you_have_successfully_activated_this_set'));
         } catch (Exception $ex) {

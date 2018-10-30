@@ -6,6 +6,6 @@ use App\BaseModel;
 
 class Category extends BaseModel
 {
-    protected $table = 'kb_category';
+    protected $table = 'kb__categories';
     protected $fillable = ['id', 'slug', 'name', 'description', 'status', 'parent', 'created_at', 'updated_at'];
 }

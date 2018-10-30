@@ -12,13 +12,13 @@ class CreateSettingsTicketTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_ticket', function (Blueprint $table) {
+        Schema::create('tickets__settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('num_format');
             $table->string('num_sequence');
             $table->string('priority');
             $table->string('sla');
-            $table->string('help_topic');
+            $table->string('tickets__helptopics');
             $table->string('max_open_ticket');
             $table->string('collision_avoid');
             $table->string('lock_ticket_frequency')->default(0);
@@ -42,6 +42,6 @@ class CreateSettingsTicketTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_ticket');
+        Schema::drop('tickets__settings');
     }
 }

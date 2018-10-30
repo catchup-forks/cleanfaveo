@@ -211,7 +211,7 @@ if ($thread->title != "") {
                                 $sla = $tickets->sla;
                                 $SlaPlan = App\Model\helpdesk\Manage\Sla_plan::where('id', '=', $sla)->first();
                                 ?>
-                                <b>{!! Lang::get('lang.sla_plan') !!}: {{$SlaPlan->grace_period}} </b>
+                                <b>{!! Lang::get('lang.tickets__slaplans') !!}: {{$SlaPlan->grace_period}} </b>
                             </div>
                             <div class="col-md-3">
                                 <b>{!! Lang::get('lang.created_date') !!}: </b> {{ UTC::usertimezone($tickets->created_at) }}
@@ -834,15 +834,15 @@ if ($thread->title != "") {
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{!! Lang::get('lang.sla_plan') !!} <span class="text-red"> *</span></label>
+                                    <label>{!! Lang::get('lang.tickets__slaplans') !!} <span class="text-red"> *</span></label>
     <?php $sla_plans = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->get() ?>
                                     <select class="form-control" name="sla_paln">
-                                        @foreach($sla_plans as $sla_plan)
-                                        <option value="{!! $sla_plan->id !!}" <?php
-                                        if ($SlaPlan->id == $sla_plan->id) {
+                                        @foreach($sla_plans as $tickets__slaplans)
+                                        <option value="{!! $tickets__slaplans->id !!}" <?php
+                                        if ($SlaPlan->id == $tickets__slaplans->id) {
                                             echo "selected";
                                         }
-                                        ?> >{!! $sla_plan->grace_period !!}</option>
+                                        ?> >{!! $tickets__slaplans->grace_period !!}</option>
                                         @endforeach
                                     </select>
                                     <spam id="error-sla" style="display:none" class="help-block text-red">This is a required field</spam>

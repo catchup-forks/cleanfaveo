@@ -1010,7 +1010,7 @@ class UserController extends Controller
     {
         $user = new User();
         $users = $user->leftJoin('user_assign_organization', 'users.id', '=', 'user_assign_organization.user_id')
-                ->leftJoin('organization', 'user_assign_organization.org_id', '=', 'organization.id')
+                ->leftJoin('crm__customers', 'user_assign_organization.org_id', '=', 'organization.id')
                 ->whereBetween('users.created_at', [$first, $last])
                 ->where('role', 'user')
                 ->where('active', 1)

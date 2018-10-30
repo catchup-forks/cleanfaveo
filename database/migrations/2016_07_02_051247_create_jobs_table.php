@@ -12,7 +12,7 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('core__cronjobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('queue');
             $table->longText('payload');
@@ -32,6 +32,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jobs');
+        Schema::drop('core__cronjobs');
     }
 }

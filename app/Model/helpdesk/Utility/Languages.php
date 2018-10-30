@@ -7,6 +7,6 @@ use App\BaseModel;
 class Languages extends BaseModel
 {
     public $timestamps = false;
-    protected $table = 'languages';
+    protected $table = 'core__languages';
     protected $fillable = ['name', 'locale'];
 }

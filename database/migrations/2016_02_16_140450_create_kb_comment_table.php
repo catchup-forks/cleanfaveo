@@ -12,7 +12,7 @@ class CreateKbCommentTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_comment', function (Blueprint $table) {
+        Schema::create('kb__comments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('article_id')->unsigned()->index('comment_article_id_foreign');
             $table->string('name');
@@ -31,6 +31,6 @@ class CreateKbCommentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_comment');
+        Schema::drop('kb__comments');
     }
 }

@@ -147,7 +147,7 @@ return [
     'create_email'                                                                     => 'Crear correo electrónico',
     'email_address'                                                                    => 'Dirección de correo electrónico',
     'email_name'                                                                       => 'Nombre de correo electrónico',
-    'help_topic'                                                                       => 'Tema de ayuda',
+    'tickets__helptopics'                                                                       => 'Tema de ayuda',
     'auto_response'                                                                    => 'Respuesta automática',
     'host_name'                                                                        => 'Nombre de host',
     'port_number'                                                                      => 'Número de puerto',
@@ -420,8 +420,8 @@ return [
       |   Auto-Response Página de configuración
       |--------------------------------------
      */
-    'auto_responce'                         => 'Respuesta automática',
-    'auto_responce-settings'                => 'Ajustes de respuesta automática',
+    'auto_response'                         => 'Respuesta automática',
+    'auto_response-settings'                => 'Ajustes de respuesta automática',
     'new_ticket'                            => 'Nuevo ticket',
     'new_ticket_by_agent'                   => 'Nuevo ticket por agente',
     'new_message'                           => 'Nuevo mensaje',
@@ -1093,7 +1093,7 @@ return [
     'high'                                           => 'Alto',
     'medium'                                         => 'Medio',
     'low'                                            => 'Bajo',
-    'sla_plan'                                       => 'SLA plan',
+    'tickets__slaplans'                                       => 'SLA plan',
     'created_date'                                   => 'Fecha de creación',
     'due_date'                                       => 'fecha de vencimiento',
     'last_response'                                  => 'Última respuesta',

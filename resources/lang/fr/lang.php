@@ -111,7 +111,7 @@ return [
     'email_address'                                                                        => 'Adresse email',
     'email_name'                                                                           => 'Nom d\'email',
     'email_to'                                                                             => 'Email to',
-    'help_topic'                                                                           => 'Rubrique d\'aide',
+    'tickets__helptopics'                                                                           => 'Rubrique d\'aide',
     'auto_response'                                                                        => 'Réponse automatique',
     'host_name'                                                                            => 'Nom d\'hôte',
     'port_number'                                                                          => 'Numéro de port',
@@ -374,8 +374,8 @@ return [
       |   Auto-Response Settings Page
       |--------------------------------------
      */
-    'auto_responce'                         => 'Réponse automatique',
-    'auto_responce-settings'                => 'Paramètres de réponse automatique',
+    'auto_response'                         => 'Réponse automatique',
+    'auto_response-settings'                => 'Paramètres de réponse automatique',
     'new_ticket'                            => 'Nouveau ticket',
     'new_ticket_by_agent'                   => 'Nouveau ticket par l\'agent',
     'new_message'                           => 'Nouveau message',
@@ -1038,7 +1038,7 @@ return [
     'high'                                            => 'Haute',
     'medium'                                          => 'Moyenne',
     'low'                                             => 'Basse',
-    'sla_plan'                                        => 'SLA',
+    'tickets__slaplans'                                        => 'SLA',
     'created_date'                                    => 'Date de création',
     'due_date'                                        => 'Date d\'échéance',
     'last_response'                                   => 'Dernière réponse',

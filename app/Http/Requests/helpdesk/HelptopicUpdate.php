@@ -32,7 +32,7 @@ class HelptopicUpdate extends Request
             'topic'      => 'required|max:50',
             'department' => 'required',
             'priority'   => 'required',
-            'sla_plan'   => 'required',
+            'tickets__slaplans'   => 'required',
         ];
     }
 }

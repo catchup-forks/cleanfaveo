@@ -32,7 +32,7 @@ class="active"
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{!! Lang::get('lang.email_information_and_settings') !!}</h3>
+        <h3 class="box-title">{!! Lang::get('lang.email_information_and_settings') !!}</h3><h4>(mailboxes)</h4>
     </div>
     <div class="box-body">
         <div id="head"></div>
@@ -89,10 +89,10 @@ class="active"
                 {!!Form::select('priority', [''=>'--System Default--','Priorities'=>$priority->pluck('priority_desc','priority_id')->toArray()],null,['class' => 'form-control select']) !!}
             </div>
             <!-- help topic -->
-            <div class="col-xs-4 form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-                {!! Form::label('help_topic',Lang::get('lang.help_topic')) !!}
-                {!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('help_topic', [''=>'--System Default--','Help Topics'=>$helps->pluck('topic','id')->toArray()],null,['class' => 'form-control select']) !!}
+            <div class="col-xs-4 form-group {{ $errors->has('tickets__helptopics') ? 'has-error' : '' }}">
+                {!! Form::label('tickets__helptopics',Lang::get('lang.help_topic')) !!}
+                {!! $errors->first('tickets__helptopics', '<spam class="help-block">:message</spam>') !!}
+                {!!Form::select('tickets__helptopics', [''=>'--System Default--','Help Topics'=>$helps->pluck('topic','id')->toArray()],null,['class' => 'form-control select']) !!}
             </div>
             <!-- status -->
             <div class="col-xs-2 form-group">

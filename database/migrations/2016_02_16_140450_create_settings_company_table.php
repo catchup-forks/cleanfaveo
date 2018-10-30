@@ -12,7 +12,7 @@ class CreateSettingsCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_company', function (Blueprint $table) {
+        Schema::create('core__settings_companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('company_name');
             $table->string('website');
@@ -34,6 +34,6 @@ class CreateSettingsCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_company');
+        Schema::drop('core__settings_companies');
     }
 }

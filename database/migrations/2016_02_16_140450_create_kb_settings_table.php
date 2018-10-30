@@ -12,7 +12,7 @@ class CreateKbSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_settings', function (Blueprint $table) {
+        Schema::create('kb__settings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pagination');
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateKbSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_settings');
+        Schema::drop('kb__settings');
     }
 }

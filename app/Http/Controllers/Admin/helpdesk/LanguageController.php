@@ -253,12 +253,12 @@ class LanguageController extends Controller
             } else {
                 Session::flash('fails', Lang::get('lang.lang-fallback-lang'));
 
-                return redirect('languages');
+                return redirect('core__languages');
             }
         } else {
             Session::flash('fails', Lang::get('lang.active-lang-error'));
 
-            return redirect('languages');
+            return redirect('core__languages');
         }
     }
 }

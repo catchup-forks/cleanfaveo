@@ -28,8 +28,8 @@ class LibraryController extends Controller
         try {
             $database = self::isDatabaseSetup();
             if ($database == true) {
-                if (Schema::hasColumn('settings_system', 'version')) {
-                    return \DB::table('settings_system')->where('id', '=', '1')->first()->version;
+                if (Schema::hasColumn('core__settings_system', 'version')) {
+                    return \DB::table('core__settings_system')->where('id', '=', '1')->first()->version;
                 } else {
                     return 0;
                 }
@@ -44,7 +44,7 @@ class LibraryController extends Controller
     public static function isDatabaseSetup()
     {
         try {
-            if (Schema::hasTable('settings_system')) {
+            if (Schema::hasTable('core__settings_system')) {
                 return true;
             }
         } catch (Exception $e) {

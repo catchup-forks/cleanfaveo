@@ -43,7 +43,7 @@ class TicketWorkflowController extends Controller
     public function workflow($fromaddress, $fromname, $subject, $body, $phone, $phonecode, $mobile_number, $helptopic, $sla, $priority, $source, $collaborator, $dept, $assign, $team_assign, $ticket_status, $form_data, $auto_response)
     {
         $contact_details = ['email' => $fromaddress, 'email_name' => $fromname, 'subject' => $subject, 'message' => $body];
-        $ticket_settings_details = ['help_topic' => $helptopic, 'sla' => $sla, 'priority' => $priority, 'source' => $source, 'dept' => $dept, 'assign' => $assign, 'team' => $team_assign, 'status' => $ticket_status, 'reject' => false];
+        $ticket_settings_details = ['tickets__helptopics' => $helptopic, 'sla' => $sla, 'priority' => $priority, 'source' => $source, 'dept' => $dept, 'assign' => $assign, 'team' => $team_assign, 'status' => $ticket_status, 'reject' => false];
         // get all the workflow common to the entire system which includes any type of ticket creation where the execution order of the workflow should be starting with ascending order
         $workflows = WorkflowName::where('target', '=', 'A-0')->where('status', '=', '1')->orderBy('order', 'asc')->get();
         foreach ($workflows as $workflow) {
@@ -171,7 +171,7 @@ class TicketWorkflowController extends Controller
         if ($ticket_settings_details['reject'] == true) {
             return ['0' => false, '1' => false];
         } else {
-            $create_ticket = $this->TicketController->create_user($contact_details['email'], $contact_details['email_name'], $contact_details['subject'], $contact_details['message'], $phone, $phonecode, $mobile_number, $ticket_settings_details['help_topic'], $ticket_settings_details['sla'], $ticket_settings_details['priority'], $source, $collaborator, $ticket_settings_details['dept'], $ticket_settings_details['assign'], $form_data, $auto_response, $ticket_settings_details['status']);
+            $create_ticket = $this->TicketController->create_user($contact_details['email'], $contact_details['email_name'], $contact_details['subject'], $contact_details['message'], $phone, $phonecode, $mobile_number, $ticket_settings_details['tickets__helptopics'], $ticket_settings_details['sla'], $ticket_settings_details['priority'], $source, $collaborator, $ticket_settings_details['dept'], $ticket_settings_details['assign'], $form_data, $auto_response, $ticket_settings_details['status']);
 
             return $create_ticket;
         }
@@ -420,11 +420,11 @@ class TicketWorkflowController extends Controller
      */
     public function changeSla($workflow_action, $ticket_settings_details)
     {
-        $sla_plan = Sla_plan::where('id', '=', $workflow_action->action)->first();
-        if ($sla_plan == null) {
+        $tickets__slaplans = Sla_plan::where('id', '=', $workflow_action->action)->first();
+        if ($tickets__slaplans == null) {
             return $ticket_settings_details;
         } else {
-            $ticket_settings_details['sla'] = $sla_plan->id;
+            $ticket_settings_details['sla'] = $tickets__slaplans->id;
 
             return $ticket_settings_details;
         }
@@ -484,7 +484,7 @@ class TicketWorkflowController extends Controller
         if ($help_topic == null) {
             return $ticket_settings_details;
         } else {
-            $ticket_settings_details['help_topic'] = $help_topic->id;
+            $ticket_settings_details['tickets__helptopics'] = $help_topic->id;
 
             return $ticket_settings_details;
         }

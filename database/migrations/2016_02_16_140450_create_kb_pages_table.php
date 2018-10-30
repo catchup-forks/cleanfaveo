@@ -12,7 +12,7 @@ class CreateKbPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('kb_pages', function (Blueprint $table) {
+        Schema::create('kb__pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->boolean('status');
@@ -30,6 +30,6 @@ class CreateKbPagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kb_pages');
+        Schema::drop('kb__pages');
     }
 }

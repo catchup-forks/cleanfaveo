@@ -34,7 +34,7 @@ return [
         ],
         'database' => [
             'driver' => 'database',
-            'table'  => 'jobs',
+            'table'  => 'core__cronjobs',
             'queue'  => 'default',
             'expire' => 60,
         ],
@@ -76,6 +76,6 @@ return [
       |
      */
     'failed' => [
-        'database' => 'mysql', 'table' => 'failed_jobs',
+        'database' => 'mysql', 'table' => 'core__failedjobs',
     ],
 ];

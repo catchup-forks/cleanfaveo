@@ -18,14 +18,14 @@ class CreateEmailsTable extends Migration
             $table->string('email_name');
             $table->integer('department')->unsigned()->nullable();
             $table->integer('priority')->unsigned()->nullable()->index('priority');
-            $table->integer('help_topic')->unsigned()->nullable()->index('help_topic');
+            $table->integer('tickets__helptopics')->unsigned()->nullable()->index('tickets__helptopics');
             $table->string('user_name');
             $table->string('password');
             $table->string('fetching_host');
             $table->string('fetching_port');
             $table->string('fetching_protocol');
             $table->string('fetching_encryption');
-            $table->string('mailbox_protocol');
+            $table->string('mail__protocols');
             $table->string('imap_config');
             $table->string('folder');
             $table->string('sending_host');
@@ -44,8 +44,8 @@ class CreateEmailsTable extends Migration
             $table->boolean('authentication');
             $table->boolean('header_spoofing');
             $table->timestamps();
-            $table->index(['department', 'priority', 'help_topic'], 'department');
-            $table->index(['department', 'priority', 'help_topic'], 'department_2');
+            $table->index(['department', 'priority', 'tickets__helptopics'], 'department');
+            $table->index(['department', 'priority', 'tickets__helptopics'], 'department_2');
         });
     }
 

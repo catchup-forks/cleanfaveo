@@ -12,8 +12,8 @@ class AddForeignKeysToKbCommentTable extends Migration
      */
     public function up()
     {
-        Schema::table('kb_comment', function (Blueprint $table) {
-            $table->foreign('article_id', 'comment_article_id_foreign')->references('id')->on('kb_article')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+        Schema::table('kb__comments', function (Blueprint $table) {
+            $table->foreign('article_id', 'comment_article_id_foreign')->references('id')->on('kb__articles')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
     }
 
@@ -24,7 +24,7 @@ class AddForeignKeysToKbCommentTable extends Migration
      */
     public function down()
     {
-        Schema::table('kb_comment', function (Blueprint $table) {
+        Schema::table('kb__comments', function (Blueprint $table) {
             $table->dropForeign('comment_article_id_foreign');
         });
     }

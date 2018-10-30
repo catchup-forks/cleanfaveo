@@ -103,7 +103,7 @@ class EmailsController extends Controller
     {
         //dd($request->all());
         try {
-            $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'help_topic', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode', 'code');
+            $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'tickets__helptopics', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode', 'code');
             $service = $request->input('sending_protocol');
             $validate = '/novalidate-cert';
             $fetch = 1;
@@ -213,7 +213,7 @@ class EmailsController extends Controller
         // fetching priority value
         $email->priority = $this->priorityValue($request->input('priority'));
         // fetching helptopic value
-        $email->help_topic = $this->helpTopicValue($request->input('help_topic'));
+        $email->help_topic = $this->helpTopicValue($request->input('tickets__helptopics'));
         // inserting the encrypted value of password
         $email->password = Crypt::encrypt($request->input('password'));
         $email->save(); // run save
@@ -249,7 +249,7 @@ class EmailsController extends Controller
         $host = $request->input('sending_host');
         $port = $request->input('sending_port');
         $enc = $request->input('sending_encryption');
-        $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'help_topic', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode');
+        $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'tickets__helptopics', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode');
 
         $this->emailService($driver, $service_request);
         $this->setMailConfig($driver, $address, $name, $username, $password, $enc, $host, $port);
@@ -273,7 +273,7 @@ class EmailsController extends Controller
         $host = $request->input('sending_host');
         $port = $request->input('sending_port');
         $enc = $request->input('sending_encryption');
-        $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'help_topic', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode');
+        $service_request = $request->except('sending_status', '_token', 'email_address', 'email_name', 'user_name', 'password', 'department', 'priority', 'tickets__helptopics', 'fetching_protocol', 'fetching_host', 'fetching_port', 'fetching_encryption', 'imap_authentication', 'sending_protocol', 'sending_host', 'sending_port', 'sending_encryption', 'smtp_authentication', 'internal_notes', '_wysihtml5_mode');
 
         $this->emailService($driver, $service_request);
         $this->setMailConfig($driver, $address, $name, $username, $password, $enc, $host, $port);
@@ -335,7 +335,7 @@ class EmailsController extends Controller
     public function edit($id, Department $department, Help_topic $help, Emails $email, Ticket_Priority $ticket_priority, MailboxProtocol $mailbox_protocol)
     {
         try {
-            $sys_email = \DB::table('settings_email')->select('sys_email')->where('id', '=', 1)->first();
+            $sys_email = \DB::table('core__settings_mailboxes')->select('sys_email')->where('id', '=', 1)->first();
             // dd($sys_email);
             // fetch the selected emails
             $emails = $email->whereId($id)->first();
@@ -397,11 +397,11 @@ class EmailsController extends Controller
     {
         try {
             if ($request->sys_email == 'on') {
-                $system = \DB::table('settings_email')
+                $system = \DB::table('core__settings_mailboxes')
                         ->where('id', '=', 1)
                         ->update(['sys_email' => $id]);
             } elseif ($request->input('count') <= 1 && $request->sys_email == null) {
-                $system = \DB::table('settings_email')
+                $system = \DB::table('core__settings_mailboxes')
                         ->where('id', '=', 1)
                         ->update(['sys_email' => null]);
             }
@@ -653,10 +653,10 @@ class EmailsController extends Controller
         $TicketWorkflowController = new \App\Http\Controllers\Agent\helpdesk\TicketWorkflowController($TicketController);
         $controller = new \App\Http\Controllers\Agent\helpdesk\MailController($TicketWorkflowController);
         $emails = new Emails();
-        $settings_email = new Email();
+        $core__settings_mailboxes = new Email();
         $system = new \App\Model\helpdesk\Settings\System();
         $ticket = new \App\Model\helpdesk\Settings\Ticket();
-        $controller->readmails($emails, $settings_email, $system, $ticket);
+        $controller->readmails($emails, $core__settings_mailboxes, $system, $ticket);
     }
 
     public function fetch($email)

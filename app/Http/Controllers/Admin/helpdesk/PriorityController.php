@@ -173,7 +173,7 @@ class PriorityController extends Controller
     {
         $default_priority = Ticket_Priority::where('is_default', '>', '0')->first();
         // dd($default_priority->is_default);
-        $topic = DB::table('help_topic')->where('priority', '=', $priority_id)->update(['priority' => $default_priority->is_default]);
+        $topic = DB::table('tickets__helptopics')->where('priority', '=', $priority_id)->update(['priority' => $default_priority->is_default]);
         // if ($topic > 0) {
         //     if ($topic > 1) {
         //         $text_topic = 'Emails';

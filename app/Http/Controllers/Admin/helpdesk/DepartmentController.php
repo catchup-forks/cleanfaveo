@@ -120,7 +120,7 @@ class DepartmentController extends Controller
             /*  Check Whether the function Success or Fail */
             if ($department->save() == true) {
                 if ($request->input('sys_department') == 'on') {
-                    DB::table('settings_system')
+                    DB::table('core__settings_system')
                             ->where('id', 1)
                             ->update(['department' => $department->id]);
                 }
@@ -152,7 +152,7 @@ class DepartmentController extends Controller
     public function edit($id, User $user, Group_assign_department $group_assign_department, Template $template, Teams $team, Department $department, Sla_plan $sla, Emails $email, Groups $group)
     {
         try {
-            $sys_department = \DB::table('settings_system')
+            $sys_department = \DB::table('core__settings_system')
                     ->select('department')
                     ->where('id', '=', 1)
                     ->first();
@@ -209,7 +209,7 @@ class DepartmentController extends Controller
                 $departments->save();
             }
             if ($request->input('sys_department') == 'on') {
-                DB::table('settings_system')
+                DB::table('core__settings_system')
                         ->where('id', 1)
                         ->update(['department' => $id]);
             }
@@ -273,7 +273,7 @@ class DepartmentController extends Controller
             } else {
                 $email = '';
             }
-            $helptopic = DB::table('help_topic')->where('department', '=', $id)->update(['department' => null], ['status' => '1']);
+            $helptopic = DB::table('tickets__helptopics')->where('department', '=', $id)->update(['department' => null], ['status' => '1']);
             if ($helptopic > 0) {
                 $helptopic = '<li>'.Lang::get('lang.the_associated_helptopic_has_been_deactivated').'</li>';
             } else {

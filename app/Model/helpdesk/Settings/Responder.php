@@ -8,7 +8,7 @@ class Responder extends BaseModel
 {
     /* Using auto_response table  */
 
-    protected $table = 'settings_auto_response';
+    protected $table = 'core__settings_auto_response';
     /* Set fillable fields in table */
     protected $fillable = [
 

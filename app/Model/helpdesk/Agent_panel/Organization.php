@@ -8,7 +8,7 @@ class Organization extends BaseModel
 {
     /* define the table name */
 
-    protected $table = 'organization';
+    protected $table = 'crm__customers';
 
     /* Define the fillable fields */
     protected $fillable = ['id', 'name', 'phone', 'website', 'address', 'head', 'internal_notes'];

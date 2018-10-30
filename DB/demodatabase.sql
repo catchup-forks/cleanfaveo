@@ -553,10 +553,10 @@ CREATE TABLE `emails` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Table structure for table `core__failedjobs`
 --
 
-CREATE TABLE `failed_jobs` (
+CREATE TABLE `core__failedjobs` (
   `id` int(10) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8_unicode_ci NOT NULL,
   `queue` text COLLATE utf8_unicode_ci NOT NULL,
@@ -567,10 +567,10 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faveo_mails`
+-- Table structure for table `faveo_mailboxes`
 --
 
-CREATE TABLE `faveo_mails` (
+CREATE TABLE `faveo_mailboxes` (
   `id` int(10) UNSIGNED NOT NULL,
   `email_id` int(11) NOT NULL,
   `drive` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -675,7 +675,7 @@ CREATE TABLE `help_topic` (
   `department` int(10) UNSIGNED DEFAULT NULL,
   `ticket_status` int(10) UNSIGNED DEFAULT NULL,
   `priority` int(10) UNSIGNED DEFAULT NULL,
-  `sla_plan` int(10) UNSIGNED DEFAULT NULL,
+  `tickets__slaplans` int(10) UNSIGNED DEFAULT NULL,
   `thank_page` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ticket_num_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `internal_notes` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -691,7 +691,7 @@ CREATE TABLE `help_topic` (
 -- Dumping data for table `help_topic`
 --
 
-INSERT INTO `help_topic` (`id`, `topic`, `parent_topic`, `custom_form`, `department`, `ticket_status`, `priority`, `sla_plan`, `thank_page`, `ticket_num_format`, `internal_notes`, `status`, `type`, `auto_assign`, `auto_response`, `created_at`, `updated_at`) VALUES
+INSERT INTO `help_topic` (`id`, `topic`, `parent_topic`, `custom_form`, `department`, `ticket_status`, `priority`, `tickets__slaplans`, `thank_page`, `ticket_num_format`, `internal_notes`, `status`, `type`, `auto_assign`, `auto_response`, `created_at`, `updated_at`) VALUES
 (1, 'Support query', '', NULL, 1, 1, 2, 1, '', '1', '', 1, 1, NULL, 0, '2016-12-13 03:19:28', '2016-12-13 03:19:28'),
 (2, 'Sales query', '', NULL, 2, 1, 2, 1, '', '1', '', 0, 1, NULL, 0, '2016-12-13 03:19:28', '2016-12-13 03:19:28'),
 (3, 'Operational query', '', NULL, 3, 1, 2, 1, '', '1', '', 0, 1, NULL, 0, '2016-12-13 03:19:28', '2016-12-13 03:19:28');
@@ -1254,10 +1254,10 @@ CREATE TABLE `rating_ref` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_alert_notice`
+-- Table structure for table `core__settings_alert_notice`
 --
 
-CREATE TABLE `settings_alert_notice` (
+CREATE TABLE `core__settings_alert_notice` (
   `id` int(10) UNSIGNED NOT NULL,
   `ticket_status` tinyint(1) NOT NULL,
   `ticket_admin_email` tinyint(1) NOT NULL,
@@ -1293,19 +1293,19 @@ CREATE TABLE `settings_alert_notice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_alert_notice`
+-- Dumping data for table `core__settings_alert_notice`
 --
 
-INSERT INTO `settings_alert_notice` (`id`, `ticket_status`, `ticket_admin_email`, `ticket_department_manager`, `ticket_department_member`, `ticket_organization_accmanager`, `message_status`, `message_last_responder`, `message_assigned_agent`, `message_department_manager`, `message_organization_accmanager`, `internal_status`, `internal_last_responder`, `internal_assigned_agent`, `internal_department_manager`, `assignment_status`, `assignment_assigned_agent`, `assignment_team_leader`, `assignment_team_member`, `transfer_status`, `transfer_assigned_agent`, `transfer_department_manager`, `transfer_department_member`, `overdue_status`, `overdue_assigned_agent`, `overdue_department_manager`, `overdue_department_member`, `system_error`, `sql_error`, `excessive_failure`, `created_at`, `updated_at`) VALUES
+INSERT INTO `core__settings_alert_notice` (`id`, `ticket_status`, `ticket_admin_email`, `ticket_department_manager`, `ticket_department_member`, `ticket_organization_accmanager`, `message_status`, `message_last_responder`, `message_assigned_agent`, `message_department_manager`, `message_organization_accmanager`, `internal_status`, `internal_last_responder`, `internal_assigned_agent`, `internal_department_manager`, `assignment_status`, `assignment_assigned_agent`, `assignment_team_leader`, `assignment_team_member`, `transfer_status`, `transfer_assigned_agent`, `transfer_department_manager`, `transfer_department_member`, `overdue_status`, `overdue_assigned_agent`, `overdue_department_manager`, `overdue_department_member`, `system_error`, `sql_error`, `excessive_failure`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2016-12-13 03:19:29', '2016-12-13 03:19:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_auto_response`
+-- Table structure for table `core__settings_auto_response`
 --
 
-CREATE TABLE `settings_auto_response` (
+CREATE TABLE `core__settings_auto_response` (
   `id` int(10) UNSIGNED NOT NULL,
   `new_ticket` tinyint(1) NOT NULL,
   `agent_new_ticket` tinyint(1) NOT NULL,
@@ -1317,19 +1317,19 @@ CREATE TABLE `settings_auto_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_auto_response`
+-- Dumping data for table `core__settings_auto_response`
 --
 
-INSERT INTO `settings_auto_response` (`id`, `new_ticket`, `agent_new_ticket`, `submitter`, `participants`, `overlimit`, `created_at`, `updated_at`) VALUES
+INSERT INTO `core__settings_auto_response` (`id`, `new_ticket`, `agent_new_ticket`, `submitter`, `participants`, `overlimit`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 0, 0, 0, '2016-12-13 03:19:29', '2016-12-13 03:19:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_company`
+-- Table structure for table `core__settings_companies`
 --
 
-CREATE TABLE `settings_company` (
+CREATE TABLE `core__settings_companies` (
   `id` int(10) UNSIGNED NOT NULL,
   `company_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1345,19 +1345,19 @@ CREATE TABLE `settings_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_company`
+-- Dumping data for table `core__settings_companies`
 --
 
-INSERT INTO `settings_company` (`id`, `company_name`, `website`, `phone`, `address`, `landing_page`, `offline_page`, `thank_page`, `logo`, `use_logo`, `created_at`, `updated_at`) VALUES
+INSERT INTO `core__settings_companies` (`id`, `company_name`, `website`, `phone`, `address`, `landing_page`, `offline_page`, `thank_page`, `logo`, `use_logo`, `created_at`, `updated_at`) VALUES
 (1, 'ABC Clothing', '', '', '', '', '', '', '', '0', '2016-12-13 03:19:29', '2016-12-13 03:30:41');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_email`
+-- Table structure for table `core__settings_mailboxes`
 --
 
-CREATE TABLE `settings_email` (
+CREATE TABLE `core__settings_mailboxes` (
   `id` int(10) UNSIGNED NOT NULL,
   `template` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sys_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1376,10 +1376,10 @@ CREATE TABLE `settings_email` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_email`
+-- Dumping data for table `core__settings_mailboxes`
 --
 
-INSERT INTO `settings_email` (`id`, `template`, `sys_email`, `alert_email`, `admin_email`, `mta`, `email_fetching`, `notification_cron`, `strip`, `separator`, `all_emails`, `email_collaborator`, `attachment`, `created_at`, `updated_at`) VALUES
+INSERT INTO `core__settings_mailboxes` (`id`, `template`, `sys_email`, `alert_email`, `admin_email`, `mta`, `email_fetching`, `notification_cron`, `strip`, `separator`, `all_emails`, `email_collaborator`, `attachment`, `created_at`, `updated_at`) VALUES
 (1, 'default', NULL, '', '', '', 1, 1, 0, 0, 1, 1, 1, '2016-12-13 03:19:29', '2016-12-13 03:19:29');
 
 -- --------------------------------------------------------
@@ -1425,10 +1425,10 @@ INSERT INTO `settings_security` (`id`, `lockout_message`, `backlist_offender`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_system`
+-- Table structure for table `core__settings_system`
 --
 
-CREATE TABLE `settings_system` (
+CREATE TABLE `core__settings_system` (
   `id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1453,19 +1453,19 @@ CREATE TABLE `settings_system` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_system`
+-- Dumping data for table `core__settings_system`
 --
 
-INSERT INTO `settings_system` (`id`, `status`, `url`, `name`, `department`, `page_size`, `log_level`, `purge_log`, `api_enable`, `api_key_mandatory`, `api_key`, `name_format`, `time_farmat`, `date_format`, `date_time_format`, `day_date_time`, `time_zone`, `content`, `version`, `created_at`, `updated_at`) VALUES
+INSERT INTO `core__settings_system` (`id`, `status`, `url`, `name`, `department`, `page_size`, `log_level`, `purge_log`, `api_enable`, `api_key_mandatory`, `api_key`, `name_format`, `time_farmat`, `date_format`, `date_time_format`, `day_date_time`, `time_zone`, `content`, `version`, `created_at`, `updated_at`) VALUES
 (1, 1, '', '', '1', '', '', '', 0, 0, '', '', NULL, NULL, 1, '', 32, '', '1.10.2', '2016-12-13 03:19:29', '2016-12-13 03:19:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings_ticket`
+-- Table structure for table `tickets__settings`
 --
 
-CREATE TABLE `settings_ticket` (
+CREATE TABLE `tickets__settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `num_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `num_sequence` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1489,19 +1489,19 @@ CREATE TABLE `settings_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings_ticket`
+-- Dumping data for table `tickets__settings`
 --
 
-INSERT INTO `settings_ticket` (`id`, `num_format`, `num_sequence`, `priority`, `sla`, `help_topic`, `max_open_ticket`, `collision_avoid`, `lock_ticket_frequency`, `captcha`, `status`, `claim_response`, `assigned_ticket`, `answered_ticket`, `agent_mask`, `html`, `client_update`, `max_file_size`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tickets__settings` (`id`, `num_format`, `num_sequence`, `priority`, `sla`, `help_topic`, `max_open_ticket`, `collision_avoid`, `lock_ticket_frequency`, `captcha`, `status`, `claim_response`, `assigned_ticket`, `answered_ticket`, `agent_mask`, `html`, `client_update`, `max_file_size`, `created_at`, `updated_at`) VALUES
 (1, '$$$$-####-####', 'sequence', '1', '2', '1', '', '2', '0', '', 1, 0, 0, 0, 0, 0, 0, 0, '2016-12-13 03:19:29', '2016-12-13 03:19:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sla_plan`
+-- Table structure for table `tickets__slaplans`
 --
 
-CREATE TABLE `sla_plan` (
+CREATE TABLE `tickets__slaplans` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `grace_period` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1514,10 +1514,10 @@ CREATE TABLE `sla_plan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `sla_plan`
+-- Dumping data for table `tickets__slaplans`
 --
 
-INSERT INTO `sla_plan` (`id`, `name`, `grace_period`, `admin_note`, `status`, `transient`, `ticket_overdue`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tickets__slaplans` (`id`, `name`, `grace_period`, `admin_note`, `status`, `transient`, `ticket_overdue`, `created_at`, `updated_at`) VALUES
 (1, 'Sla 1', '6 Hours', '', 1, 0, 0, '2016-12-13 03:19:25', '2016-12-13 03:19:25'),
 (2, 'Sla 2', '12 Hours', '', 1, 0, 0, '2016-12-13 03:19:25', '2016-12-13 03:19:25'),
 (3, 'Sla 3', '24 Hours', '', 1, 0, 0, '2016-12-13 03:19:25', '2016-12-13 03:19:25');
@@ -2438,15 +2438,15 @@ ALTER TABLE `emails`
   ADD KEY `help_topic` (`help_topic`);
 
 --
--- Indexes for table `failed_jobs`
+-- Indexes for table `core__failedjobs`
 --
-ALTER TABLE `failed_jobs`
+ALTER TABLE `core__failedjobs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `faveo_mails`
+-- Indexes for table `faveo_mailboxes`
 --
-ALTER TABLE `faveo_mails`
+ALTER TABLE `faveo_mailboxes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2485,7 +2485,7 @@ ALTER TABLE `help_topic`
   ADD KEY `department` (`department`),
   ADD KEY `ticket_status` (`ticket_status`),
   ADD KEY `priority` (`priority`),
-  ADD KEY `sla_plan` (`sla_plan`),
+  ADD KEY `tickets__slaplans` (`tickets__slaplans`),
   ADD KEY `auto_assign_2` (`auto_assign`);
 
 --
@@ -2621,27 +2621,27 @@ ALTER TABLE `rating_ref`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings_alert_notice`
+-- Indexes for table `core__settings_alert_notice`
 --
-ALTER TABLE `settings_alert_notice`
+ALTER TABLE `core__settings_alert_notice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings_auto_response`
+-- Indexes for table `core__settings_auto_response`
 --
-ALTER TABLE `settings_auto_response`
+ALTER TABLE `core__settings_auto_response`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings_company`
+-- Indexes for table `core__settings_companies`
 --
-ALTER TABLE `settings_company`
+ALTER TABLE `core__settings_companies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings_email`
+-- Indexes for table `core__settings_mailboxes`
 --
-ALTER TABLE `settings_email`
+ALTER TABLE `core__settings_mailboxes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2658,9 +2658,9 @@ ALTER TABLE `settings_security`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings_system`
+-- Indexes for table `core__settings_system`
 --
-ALTER TABLE `settings_system`
+ALTER TABLE `core__settings_system`
   ADD PRIMARY KEY (`id`),
   ADD KEY `time_farmat` (`time_farmat`),
   ADD KEY `date_format` (`date_format`),
@@ -2668,15 +2668,15 @@ ALTER TABLE `settings_system`
   ADD KEY `time_zone` (`time_zone`);
 
 --
--- Indexes for table `settings_ticket`
+-- Indexes for table `tickets__settings`
 --
-ALTER TABLE `settings_ticket`
+ALTER TABLE `tickets__settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sla_plan`
+-- Indexes for table `tickets__slaplans`
 --
-ALTER TABLE `sla_plan`
+ALTER TABLE `tickets__slaplans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2944,14 +2944,14 @@ ALTER TABLE `department`
 ALTER TABLE `emails`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT for table `core__failedjobs`
 --
-ALTER TABLE `failed_jobs`
+ALTER TABLE `core__failedjobs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `faveo_mails`
+-- AUTO_INCREMENT for table `faveo_mailboxes`
 --
-ALTER TABLE `faveo_mails`
+ALTER TABLE `faveo_mailboxes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `faveo_queues`
@@ -3079,24 +3079,24 @@ ALTER TABLE `ratings`
 ALTER TABLE `rating_ref`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `settings_alert_notice`
+-- AUTO_INCREMENT for table `core__settings_alert_notice`
 --
-ALTER TABLE `settings_alert_notice`
+ALTER TABLE `core__settings_alert_notice`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `settings_auto_response`
+-- AUTO_INCREMENT for table `core__settings_auto_response`
 --
-ALTER TABLE `settings_auto_response`
+ALTER TABLE `core__settings_auto_response`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `settings_company`
+-- AUTO_INCREMENT for table `core__settings_companies`
 --
-ALTER TABLE `settings_company`
+ALTER TABLE `core__settings_companies`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `settings_email`
+-- AUTO_INCREMENT for table `core__settings_mailboxes`
 --
-ALTER TABLE `settings_email`
+ALTER TABLE `core__settings_mailboxes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `settings_ratings`
@@ -3109,19 +3109,19 @@ ALTER TABLE `settings_ratings`
 ALTER TABLE `settings_security`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `settings_system`
+-- AUTO_INCREMENT for table `core__settings_system`
 --
-ALTER TABLE `settings_system`
+ALTER TABLE `core__settings_system`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `settings_ticket`
+-- AUTO_INCREMENT for table `tickets__settings`
 --
-ALTER TABLE `settings_ticket`
+ALTER TABLE `tickets__settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `sla_plan`
+-- AUTO_INCREMENT for table `tickets__slaplans`
 --
-ALTER TABLE `sla_plan`
+ALTER TABLE `tickets__slaplans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `social_media`
@@ -3277,7 +3277,7 @@ ALTER TABLE `canned_response`
 -- Constraints for table `department`
 --
 ALTER TABLE `department`
-  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`sla`) REFERENCES `sla_plan` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`sla`) REFERENCES `tickets__slaplans` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `department_ibfk_2` FOREIGN KEY (`manager`) REFERENCES `users` (`id`) ON UPDATE NO ACTION;
 
 --
@@ -3309,7 +3309,7 @@ ALTER TABLE `help_topic`
   ADD CONSTRAINT `help_topic_ibfk_2` FOREIGN KEY (`department`) REFERENCES `department` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `help_topic_ibfk_3` FOREIGN KEY (`ticket_status`) REFERENCES `ticket_status` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `help_topic_ibfk_4` FOREIGN KEY (`priority`) REFERENCES `ticket_priority` (`priority_id`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `help_topic_ibfk_5` FOREIGN KEY (`sla_plan`) REFERENCES `sla_plan` (`id`),
+  ADD CONSTRAINT `help_topic_ibfk_5` FOREIGN KEY (`tickets__slaplans`) REFERENCES `tickets__slaplans` (`id`),
   ADD CONSTRAINT `help_topic_ibfk_6` FOREIGN KEY (`auto_assign`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 
 --
@@ -3332,9 +3332,9 @@ ALTER TABLE `organization`
   ADD CONSTRAINT `organization_ibfk_1` FOREIGN KEY (`head`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `settings_system`
+-- Constraints for table `core__settings_system`
 --
-ALTER TABLE `settings_system`
+ALTER TABLE `core__settings_system`
   ADD CONSTRAINT `settings_system_ibfk_1` FOREIGN KEY (`time_zone`) REFERENCES `timezone` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `settings_system_ibfk_2` FOREIGN KEY (`time_farmat`) REFERENCES `time_format` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `settings_system_ibfk_3` FOREIGN KEY (`date_format`) REFERENCES `date_format` (`id`) ON UPDATE NO ACTION,
@@ -3361,7 +3361,7 @@ ALTER TABLE `tickets`
   ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`dept_id`) REFERENCES `department` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`priority_id`) REFERENCES `ticket_priority` (`priority_id`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`sla`) REFERENCES `sla_plan` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`sla`) REFERENCES `tickets__slaplans` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`help_topic_id`) REFERENCES `help_topic` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `tickets_ibfk_7` FOREIGN KEY (`status`) REFERENCES `ticket_status` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `tickets_ibfk_8` FOREIGN KEY (`source`) REFERENCES `ticket_source` (`id`) ON UPDATE NO ACTION,

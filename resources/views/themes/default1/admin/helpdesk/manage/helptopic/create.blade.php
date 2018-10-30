@@ -62,8 +62,8 @@ class="active"
             @if($errors->first('priority'))
             <li class="error-message-padding">{!! $errors->first('priority', ':message') !!}</li>
             @endif
-            @if($errors->first('sla_plan'))
-            <li class="error-message-padding">{!! $errors->first('sla_plan', ':message') !!}</li>
+            @if($errors->first('tickets__slaplans'))
+            <li class="error-message-padding">{!! $errors->first('tickets__slaplans', ':message') !!}</li>
             @endif
             @if($errors->first('auto_assign'))
             <li class="error-message-padding">{!! $errors->first('auto_assign', ':message') !!}</li>
@@ -128,9 +128,9 @@ class="active"
                     </div>
                     <!-- SLA Plan:	 Drop down: value SLA Plan  table-->
                     <div class="col-md-4">
-                        <div class="form-group {{ $errors->has('sla_plan') ? 'has-error' : '' }}">
-                            {!! Form::label('sla_plan',Lang::get('lang.SLA_plan')) !!}
-                            {!!Form::select('sla_plan', [''=>Lang::get('lang.select_a_sla_plan'),Lang::get('lang.sla_plans')=>$slas->pluck('name','id')->toArray()],1,['class' => 'form-control']) !!}
+                        <div class="form-group {{ $errors->has('tickets__slaplans') ? 'has-error' : '' }}">
+                            {!! Form::label('tickets__slaplans',Lang::get('lang.SLA_plan')) !!}
+                            {!!Form::select('tickets__slaplans', [''=>Lang::get('lang.select_a_sla_plan'),Lang::get('lang.sla_plans')=>$slas->pluck('name','id')->toArray()],1,['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <!-- Auto-assign To:	Drop Down: value  from Agent table   -->

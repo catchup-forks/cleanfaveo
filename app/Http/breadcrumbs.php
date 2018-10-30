@@ -183,7 +183,7 @@ Breadcrumbs::register('getemail', function ($breadcrumbs) {
 });
 Breadcrumbs::register('getresponder', function ($breadcrumbs) {
     $breadcrumbs->parent('setting');
-    $breadcrumbs->push(Lang::get('lang.auto_responce'), route('getresponder'));
+    $breadcrumbs->push(Lang::get('lang.auto_response'), route('getresponder'));
 });
 
 Breadcrumbs::register('getalert', function ($breadcrumbs) {

@@ -243,7 +243,7 @@ class="active"
                                 var row = header.insertRow(0);
                                 var body = tableRef.createTBody();
                                 window.result1a = result;
-//                                window.help_topic_global = document.getElementById('help_topic');
+//                                window.help_topic_global = document.getElementById('tickets__helptopics');
                                 for (var i = 0; i < result.length; i++) {
                                     var row1 = body.insertRow(0);
 //                                    if(i % 4 === 0) {

@@ -69,7 +69,7 @@ class TemplateController extends Controller
             $templates = $template->get();
             $languages = $language->get();
 
-            return view('themes.default1.admin.helpdesk.emails.template.create', compact('languages', 'templates'));
+            return view('themes.default1.admin.helpdesk.emails.template.create', compact('core__languages', 'templates'));
         } catch (Exception $e) {
             return view('404');
         }
@@ -198,7 +198,7 @@ class TemplateController extends Controller
     {
         $directory = str_replace('-', '/', $path);
         $dir = $directory.$template;
-        $status = \DB::table('settings_email')->first();
+        $status = \DB::table('core__settings_mailboxes')->first();
         if ($template == 'default' or $template == $status->template) {
             return \Redirect::back()->with('fails', 'You cannot delete a default or active directory!');
         }
@@ -219,7 +219,7 @@ class TemplateController extends Controller
 
     public function activateset($setname)
     {
-        \DB::table('settings_email')->update(['template' => $setname]);
+        \DB::table('core__settings_mailboxes')->update(['template' => $setname]);
 
         return \Redirect::back()->with('success', 'You have Successfully Activated this Set');
     }
@@ -230,7 +230,7 @@ class TemplateController extends Controller
             $templates = $template->whereId($id)->first();
             $languages = $language->get();
 
-            return view('themes.default1.admin.helpdesk.emails.template.edit', compact('templates', 'languages'));
+            return view('themes.default1.admin.helpdesk.emails.template.edit', compact('templates', 'core__languages'));
         } catch (Exception $e) {
             return view('404');
         }

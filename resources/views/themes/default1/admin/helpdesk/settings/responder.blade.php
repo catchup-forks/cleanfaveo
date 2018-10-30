@@ -31,7 +31,7 @@ class="active"
 {!! Form::model($responders,['url' => 'postresponder/'.$responders->id, 'method' => 'PATCH']) !!}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{{Lang::get('lang.auto_responce-settings')}}</h3> 
+        <h3 class="box-title">{{Lang::get('lang.auto_response-settings')}}</h3> 
     </div>
     <!-- New Ticket: CHECKBOX	 Ticket Owner   -->
     <div class="box-body">

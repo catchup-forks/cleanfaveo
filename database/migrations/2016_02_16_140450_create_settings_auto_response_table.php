@@ -12,7 +12,7 @@ class CreateSettingsAutoResponseTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_auto_response', function (Blueprint $table) {
+        Schema::create('core__settings_auto_response', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('new_ticket');
             $table->boolean('agent_new_ticket');
@@ -30,6 +30,6 @@ class CreateSettingsAutoResponseTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_auto_response');
+        Schema::drop('core__settings_auto_response');
     }
 }

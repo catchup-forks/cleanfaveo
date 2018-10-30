@@ -144,7 +144,7 @@ return [
     'create_email'                                                                     => 'Maak e-mailbericht',
     'email_address'                                                                    => 'E-mailadres',
     'email_name'                                                                       => 'E-mail naam',
-    'help_topic'                                                                       => 'Help Onderwerp',
+    'tickets__helptopics'                                                                       => 'Help Onderwerp',
     'auto_response'                                                                    => 'Automatisch beantwoorden',
     'host_name'                                                                        => 'Hostnaam',
     'port_number'                                                                      => 'Poortnummer',
@@ -425,8 +425,8 @@ return [
 
      */
 
-    'auto_responce'                      => 'Autmomatisch antwoord',
-    'auto_responce-settings'             => 'Autmomatisch antwoord instellingen',
+    'auto_response'                      => 'Autmomatisch antwoord',
+    'auto_response-settings'             => 'Autmomatisch antwoord instellingen',
     'new_ticket'                         => 'Nieuw ticket',
     'new_ticket_by_agent'                => 'Nieuw ticket door medewerker',
     'new_message'                        => 'Nieuw bericht',
@@ -1100,7 +1100,7 @@ return [
     'high'                                           => 'Hoog',
     'medium'                                         => 'Middel',
     'low'                                            => 'Laag',
-    'sla_plan'                                       => 'SLA plan',
+    'tickets__slaplans'                                       => 'SLA plan',
     'created_date'                                   => 'Aanmaak datum',
     'due_date'                                       => 'Verloop datum',
     'last_response'                                  => 'Laatste antwoord',

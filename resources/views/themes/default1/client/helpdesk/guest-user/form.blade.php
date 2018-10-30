@@ -76,9 +76,9 @@
         </div>
         @endif
 
-		<div class="form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-			{!! Form::label('help_topic', 'Choose a Help Topic') !!} 
-			{!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}		
+		<div class="form-group {{ $errors->has('tickets__helptopics') ? 'has-error' : '' }}">
+			{!! Form::label('tickets__helptopics', 'Choose a Help Topic') !!} 
+			{!! $errors->first('tickets__helptopics', '<spam class="help-block">:message</spam>') !!}		
             <select name="help_topic" class="form-control" id="selectid">
                 <option>--Select--</option>
                 <option value="1">Default Help Topic</option>

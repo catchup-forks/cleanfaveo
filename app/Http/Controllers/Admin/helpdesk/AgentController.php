@@ -91,7 +91,7 @@ class AgentController extends Controller
             $location = GeoIP::getLocation();
             $phonecode = $code->where('iso', '=', $location->iso_code)->first();
             // returns to the page with all the variables and their datas
-            $send_otp = DB::table('common_settings')->select('status')->where('option_name', '=', 'send_otp')->first();
+            $send_otp = DB::table('core__settings_common')->select('status')->where('option_name', '=', 'send_otp')->first();
 
             return view('themes.default1.admin.helpdesk.agent.agents.create', compact('assign', 'teams', 'agents', 'timezones', 'groups', 'departments', 'team', 'send_otp'))->with('phonecode', $phonecode->phonecode);
         } catch (Exception $e) {

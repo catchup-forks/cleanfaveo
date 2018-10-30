@@ -12,7 +12,7 @@ class CreateSettingsSystemTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_system', function (Blueprint $table) {
+        Schema::create('core__settings_system', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status');
             $table->string('url');
@@ -43,6 +43,6 @@ class CreateSettingsSystemTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_system');
+        Schema::drop('core__settings_system');
     }
 }

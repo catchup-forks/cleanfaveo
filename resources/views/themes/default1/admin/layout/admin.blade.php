@@ -250,7 +250,7 @@
                         <li class="treeview @yield('Emails')">
                             <a href="#">
                                 <i class="fa fa-envelope-o"></i>
-                                <span>{!! Lang::get('lang.email') !!}</span>
+                                <span>{!! Lang::get('lang.mailboxes') !!}</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -306,7 +306,7 @@
                                 <li @yield('company')><a href="{{url('getcompany')}}"><i class="fa fa-building"></i>{!! Lang::get('lang.company') !!}</a></li>
                                 <li @yield('system')><a href="{{url('getsystem')}}"><i class="fa fa-laptop"></i>{!! Lang::get('lang.system') !!}</a></li>
                                 <li @yield('social-login')><a href="{{ url('social/media') }}"><i class="fa fa-globe"></i> {!! Lang::get('lang.social-login') !!}</a></li>
-                                <li @yield('languages')><a href="{{url('languages')}}"><i class="fa fa-language"></i>{!! Lang::get('lang.language') !!}</a></li>
+                                <li @yield('core__languages')><a href="{{url('core__languages')}}"><i class="fa fa-language"></i>{!! Lang::get('lang.language') !!}</a></li>
                                 <li @yield('cron')><a href="{{url('job-scheduler')}}"><i class="fa fa-hourglass"></i>{!! Lang::get('lang.cron') !!}</a></li>
                                 <li @yield('security')><a href="{{url('security')}}"><i class="fa fa-lock"></i>{!! Lang::get('lang.security') !!}</a></li>
                                 <li @yield('notification')><a href="{{url('settings-notification')}}"><i class="fa fa-bell"></i>{!! Lang::get('lang.notifications') !!}</a></li>

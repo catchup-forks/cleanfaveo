@@ -149,8 +149,8 @@ class HelptopicController extends Controller
             $forms = $form->get();
             $slas = $sla->get();
             $priority = Ticket_Priority::where('status', '=', 1)->get();
-            $sys_help_topic = \DB::table('settings_ticket')
-                                ->select('help_topic')
+            $sys_help_topic = \DB::table('tickets__settings')
+                                ->select('tickets__helptopics')
                                 ->where('id', '=', 1)->first();
 
             return view('themes.default1.admin.helpdesk.manage.helptopic.edit', compact('priority', 'departments', 'topics', 'forms', 'agents', 'slas', 'sys_help_topic'));
@@ -188,9 +188,9 @@ class HelptopicController extends Controller
             $topics->auto_assign = $auto_assign;
             $topics->save();
             if ($request->input('sys_help_tpoic') == 'on') {
-                \DB::table('settings_ticket')
+                \DB::table('tickets__settings')
                     ->where('id', '=', 1)
-                    ->update(['help_topic' => $id]);
+                    ->update(['tickets__helptopics' => $id]);
             }
             /* redirect to Index page with Success Message */
             return redirect('helptopic')->with('success', Lang::get('lang.helptopic_updated_successfully'));
@@ -225,7 +225,7 @@ class HelptopicController extends Controller
             } else {
                 $ticket = '';
             }
-            $emails = DB::table('emails')->where('help_topic', '=', $id)->update(['help_topic' => $ticket_settings->help_topic]);
+            $emails = DB::table('emails')->where('tickets__helptopics', '=', $id)->update(['tickets__helptopics' => $ticket_settings->help_topic]);
             if ($emails > 0) {
                 if ($emails > 1) {
                     $text_emails = 'Emails';

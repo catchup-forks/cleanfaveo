@@ -93,8 +93,8 @@ class="active"
                 {!! Form::label('email',Lang::get('lang.email')) !!}<span class="text-red"> *</span>
                 {!! Form::email('email',null,['class' => 'form-control']) !!}
             </div>
-            <div class="col-xs-6 form-group {{ $errors->has('organization') ? 'has-error' : '' }}">
-                {!! Form::label('organization',Lang::get('lang.organization')) !!}
+            <div class="col-xs-6 form-group {{ $errors->has('crm__customers') ? 'has-error' : '' }}">
+                {!! Form::label('crm__customers',Lang::get('lang.organization')) !!}
                
 
                   <select class="form-control" name="org_id">
