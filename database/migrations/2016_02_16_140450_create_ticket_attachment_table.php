@@ -12,7 +12,7 @@ class CreateTicketAttachmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_attachment', function (Blueprint $table) {
+        Schema::create('tickets__attachments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('thread_id')->unsigned()->nullable()->index('thread_id');
@@ -32,6 +32,6 @@ class CreateTicketAttachmentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ticket_attachment');
+        Schema::drop('tickets__attachments');
     }
 }

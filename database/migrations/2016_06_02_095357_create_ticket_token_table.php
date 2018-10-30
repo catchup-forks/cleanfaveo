@@ -12,7 +12,7 @@ class CreateTicketTokenTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_token', function (Blueprint $table) {
+        Schema::create('tickets__tokens', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ticket_id');
             $table->string('token');
@@ -27,6 +27,6 @@ class CreateTicketTokenTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ticket_token');
+        Schema::drop('tickets__tokens');
     }
 }

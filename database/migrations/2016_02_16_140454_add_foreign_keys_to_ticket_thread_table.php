@@ -12,10 +12,10 @@ class AddForeignKeysToTicketThreadTable extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_thread', function (Blueprint $table) {
+        Schema::table('tickets__threads', function (Blueprint $table) {
             $table->foreign('ticket_id', 'ticket_thread_ibfk_1')->references('id')->on('tickets')->onUpdate('NO ACTION')->onDelete('RESTRICT');
             $table->foreign('user_id', 'ticket_thread_ibfk_2')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('RESTRICT');
-            $table->foreign('source', 'ticket_thread_ibfk_3')->references('id')->on('ticket_source')->onUpdate('NO ACTION')->onDelete('RESTRICT');
+            $table->foreign('source', 'ticket_thread_ibfk_3')->references('id')->on('tickets_sources')->onUpdate('NO ACTION')->onDelete('RESTRICT');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToTicketThreadTable extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_thread', function (Blueprint $table) {
+        Schema::table('tickets__threads', function (Blueprint $table) {
             $table->dropForeign('ticket_thread_ibfk_1');
             $table->dropForeign('ticket_thread_ibfk_2');
             $table->dropForeign('ticket_thread_ibfk_3');

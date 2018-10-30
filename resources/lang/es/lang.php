@@ -1105,7 +1105,7 @@ return [
     'attachment'                                     => 'Adjunto archivo',
     'internal_note'                                  => 'Nota interna',
     'this_ticket_is_under_banned_user'               => 'Este ticket está bajo usuario baneado',
-    'ticket_source'                                  => 'Ticket source',
+    'tickets_sources'                                  => 'Ticket source',
     'are_you_sure_to_ban'                            => 'Seguro que vas a banear',
     'whome_do_you_want_to_assign_ticket'             => 'A quién quiere asignar el ticket',
     'are_you_sure_you_want_to_surrender_this_ticket' => 'Está seguro de que desea entregar este ticket',
@@ -1371,7 +1371,7 @@ Puede ingresar el número de días de registros de base de datos que se eliminar
     'have_a_ticket'                                                                    => 'Tengo un ticket',
     'check_ticket_status'                                                              => 'Compruebe el estado del ticket',
     'choose_a_help_topic'                                                              => 'Elija un tema de ayuda',
-    'ticket_status'                                                                    => 'Estado del ticket',
+    'tickets__statuses'                                                                    => 'Estado del ticket',
     'post_comment'                                                                     => 'Publicar comentario',
     'plugin'                                                                           => 'Plugin',
     'edit_profile'                                                                     => 'Editar perfil',
@@ -1495,7 +1495,7 @@ Puede ingresar el número de días de registros de base de datos que se eliminar
      * Ticket Prioridad
      * -----------------------------------------------------------------------------------
      */
-    'ticket_priority'                                           => 'Prioridad del ticket',
+    'tickets__priorities'                                           => 'Prioridad del ticket',
     'priority'                                                  => 'Prioridad',
     'priority_desc'                                             => 'Descripción de Prioridad',
     'priority_urgency'                                          => 'Prioridad urgencia',

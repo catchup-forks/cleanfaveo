@@ -99,14 +99,14 @@ class FilterController extends Controller
     {
         $ticket = new Tickets();
         $tickets = $ticket
-                        ->leftJoin('ticket_source', 'ticket_source.id', '=', 'tickets.source')
-                        ->leftJoin('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                        ->leftJoin('tickets_sources', 'ticket_source.id', '=', 'tickets.source')
+                        ->leftJoin('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                         ->leftJoin('users as u1', 'u1.id', '=', 'tickets.user_id')
                         ->leftJoin('teams', 'teams.id', '=', 'tickets.team_id')
                         ->leftJoin('users as u2', 'u2.id', '=', 'tickets.assigned_to')
                         ->leftJoin('ticket_collaborator', 'ticket_collaborator.ticket_id', '=', 'tickets.id')
                         ->leftJoin('ticket_thread as th', 'th.ticket_id', '=', 'tickets.id')
-                        ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'th.id')
+                        ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'th.id')
                         ->select(
                                 'tickets.id', 'th.title', 'tickets.ticket_number', 'u1.user_name as c_uname', 'u2.user_name as a_uname', \DB::raw('CONVERT_TZ(max(th.updated_at), "+00:00", "'.$this->gmt.'") as updated_at2'), \DB::raw('CONVERT_TZ(min(th.updated_at), "+00:00", "'.$this->gmt.'") as created_at2'), \DB::raw('CONVERT_TZ(max(tickets.duedate), "+00:00", "'.$this->gmt.'") as duedate'), \DB::raw('max(th.updated_at) as updated_at'), \DB::raw('min(th.updated_at) as created_at'), 'tickets.duedate as due', 'u1.id as c_uid', 'ticket_priority.priority as priority', 'u1.first_name AS c_fname', 'u1.last_name as c_lname', 'u2.id as a_uid', 'u2.first_name as a_fname', 'u2.last_name as a_lname', 'u1.active as verified', 'teams.name', 'tickets.assigned_to', 'ticket_priority.priority_color as color', 'ticket_source.css_class as css', \DB::raw('COUNT(ticket_attachment.thread_id) as countattachment'), DB::raw('COUNT(ticket_collaborator.ticket_id) as countcollaborator'), \DB::raw('COUNT(DISTINCT th.id) as countthread'), \DB::raw('substring_index(group_concat(if(`th`.`is_internal` = 0, `th`.`poster`,null)ORDER By th.id desc) , ",", 1) as last_replier'), \DB::raw('substring_index(group_concat(th.title order by th.id asc SEPARATOR "-||,||-") , "-||,||-", 1) as ticket_title'), 'ticket_source.name as source'
                         )->groupby('tickets.id');
@@ -889,7 +889,7 @@ class FilterController extends Controller
      */
     public function filterBySource($source_names, $table)
     {
-        $sources = DB::table('ticket_source')->whereIn('name', $source_names)->orWhereIn('value', $source_names)->pluck('id');
+        $sources = DB::table('tickets_sources')->whereIn('name', $source_names)->orWhereIn('value', $source_names)->pluck('id');
         if (count($sources) == 0) {
             return $table->where('tickets.id', '=', null);
         }
@@ -952,7 +952,7 @@ class FilterController extends Controller
      */
     public function filterByStatus($status_array, $table)
     {
-        $status = DB::table('ticket_status')->whereIn('name', $status_array)->pluck('id');
+        $status = DB::table('tickets__statuses')->whereIn('name', $status_array)->pluck('id');
         if (count($status) > 0) {
             return $table->whereIn('tickets.status', $status);
         } else {

@@ -75,8 +75,8 @@ class="active"
                 <!-- status radio: required: Active|Dissable -->
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group {{ $errors->has('ticket_status') ? 'has-error' : '' }}">
-                            {!! Form::label('ticket_status',Lang::get('lang.status')) !!}&nbsp;&nbsp;
+                        <div class="form-group {{ $errors->has('tickets__statuses') ? 'has-error' : '' }}">
+                            {!! Form::label('tickets__statuses',Lang::get('lang.status')) !!}&nbsp;&nbsp;
                             {!! Form::radio('status','1',true) !!} {{Lang::get('lang.active')}}&nbsp;&nbsp;&nbsp;
                             {!! Form::radio('status','0') !!} {{Lang::get('lang.inactive')}}
                         </div>

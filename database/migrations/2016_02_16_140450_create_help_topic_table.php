@@ -18,7 +18,7 @@ class CreateHelpTopicTable extends Migration
             $table->string('parent_topic');
             $table->integer('custom_form')->unsigned()->nullable()->index('custom_form');
             $table->integer('department')->unsigned()->nullable()->index('department');
-            $table->integer('ticket_status')->unsigned()->nullable()->index('ticket_status');
+            $table->integer('tickets__statuses')->unsigned()->nullable()->index('tickets__statuses');
             $table->integer('priority')->unsigned()->nullable()->index('priority');
             $table->integer('tickets__slaplans')->unsigned()->nullable()->index('tickets__slaplans');
             $table->string('thank_page');

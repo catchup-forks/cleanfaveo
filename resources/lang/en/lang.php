@@ -1089,7 +1089,7 @@ return [
     'attachment'                                     => 'Attachment',
     'internal_note'                                  => 'Internal note',
     'this_ticket_is_under_banned_user'               => 'This ticket is under banned user',
-    'ticket_source'                                  => 'Ticket source',
+    'tickets_sources'                                  => 'Ticket source',
     'are_you_sure_to_ban'                            => 'Are you sure to ban',
     'whome_do_you_want_to_assign_ticket'             => 'Whom do you want to assign ticket',
     'are_you_sure_you_want_to_surrender_this_ticket' => 'Are you sure you want to surrender this ticket',
@@ -1355,7 +1355,7 @@ return [
     'have_a_ticket'                                                                    => 'Have a ticket',
     'check_ticket_status'                                                              => 'Check ticket status',
     'choose_a_help_topic'                                                              => 'Choose a help topic',
-    'ticket_status'                                                                    => 'Ticket status',
+    'tickets__statuses'                                                                    => 'Ticket status',
     'post_comment'                                                                     => 'Post comment',
     'plugin'                                                                           => 'Plugin',
     'edit_profile'                                                                     => 'Edit profile',
@@ -1479,7 +1479,7 @@ return [
      * -----------------------------------------------------------------------------------
      */
     'ticket_priority'                                           => 'Ticket priorities',
-    'priority'                                                  => 'Priority',
+    'priority'                                                  => 'Priorities',
     'priority_desc'                                             => 'Priority description',
     'priority_urgency'                                          => 'Priority urgency',
     'priority_id'                                               => 'Priority Id',

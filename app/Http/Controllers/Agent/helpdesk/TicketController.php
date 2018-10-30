@@ -226,7 +226,7 @@ class TicketController extends Controller
         if ($tickets == null) {
             return redirect()->route('inbox.ticket')->with('fails', \Lang::get('lang.invalid_attempt'));
         }
-        $avg = DB::table('ticket_thread')->where('ticket_id', '=', $id)->where('reply_rating', '!=', 0)->avg('reply_rating');
+        $avg = DB::table('tickets__threads')->where('ticket_id', '=', $id)->where('reply_rating', '!=', 0)->avg('reply_rating');
         $avg_rate = explode('.', $avg);
         $avg_rating = $avg_rate[0];
         $thread = Ticket_Thread::where('ticket_id', '=', $id)->first();
@@ -455,16 +455,16 @@ class TicketController extends Controller
             return 2;
         } elseif (Input::get('tickets__helptopics') == null) {
             return 3;
-        } elseif (Input::get('ticket_source') == null) {
+        } elseif (Input::get('tickets_sources') == null) {
             return 4;
-        } elseif (Input::get('ticket_priority') == null) {
+        } elseif (Input::get('tickets__priorities') == null) {
             return 5;
         } else {
             $ticket = $ticket->where('id', '=', $ticket_id)->first();
             $ticket->sla = Input::get('sla_paln');
             $ticket->help_topic_id = Input::get('tickets__helptopics');
-            $ticket->source = Input::get('ticket_source');
-            $ticket->priority_id = Input::get('ticket_priority');
+            $ticket->source = Input::get('tickets_sources');
+            $ticket->priority_id = Input::get('tickets__priorities');
             $dept = Help_topic::select('department')->where('id', '=', $ticket->help_topic_id)->first();
             $ticket->dept_id = $dept->department;
             $ticket->save();
@@ -487,7 +487,7 @@ class TicketController extends Controller
     public function ticket_print($id)
     {
         $tickets = Tickets::
-                leftJoin('ticket_thread', function ($join) {
+                leftJoin('tickets__threads', function ($join) {
                     $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->whereNotNull('ticket_thread.title');
                 })

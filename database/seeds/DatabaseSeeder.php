@@ -259,13 +259,13 @@ class DatabaseSeeder extends Seeder
         Department::create(['name' => 'Sales', 'type' => '1', 'sla' => '1']);
         Department::create(['name' => 'Operation', 'type' => '1', 'sla' => '1']);
         /* Helptopic */
-        help_topic::create(['topic' => 'Support query', 'department' => '1', 'ticket_status' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '1', 'type' => '1', 'auto_response' => '0']);
-        help_topic::create(['topic' => 'Sales query', 'department' => '2', 'ticket_status' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
-        help_topic::create(['topic' => 'Operational query', 'department' => '3', 'ticket_status' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Support query', 'department' => '1', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '1', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Sales query', 'department' => '2', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
+        help_topic::create(['topic' => 'Operational query', 'department' => '3', 'tickets__statuses' => '1', 'priority' => '2', 'tickets__slaplans' => '1', 'ticket_num_format' => '1', 'status' => '0', 'type' => '1', 'auto_response' => '0']);
         /* Daily notification log */
         Log_notification::create(['log' => 'NOT-1']);
         /* System complete settings */
-        Alert::create(['id' => '1', 'ticket_status' => '1', 'ticket_admin_email' => '1', 'assignment_status' => '1', 'assignment_status' => '1', 'assignment_assigned_agent' => '1']);
+        Alert::create(['id' => '1', 'tickets__statuses' => '1', 'ticket_admin_email' => '1', 'assignment_status' => '1', 'assignment_status' => '1', 'assignment_assigned_agent' => '1']);
         Company::create(['id' => '1']);
         Email::create(['id' => '1', 'template' => 'default', 'email_fetching' => '1', 'notification_cron' => '1', 'all_emails' => '1', 'email_collaborator' => '1', 'attachment' => '1']);
         Responder::create(['id' => '1', 'new_ticket' => '1', 'agent_new_ticket' => '1']);

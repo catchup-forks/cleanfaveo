@@ -63,8 +63,8 @@ class="active"
             <div class="box-body">
                 <div class="form-group">
                     <!-- Status:     Enable   Disable     -->
-                    {!! Form::label('ticket_status',Lang::get('lang.status').":") !!}&nbsp;&nbsp;
-                    {!! Form::radio('ticket_status',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!! Form::radio('ticket_status',0) !!}  {!! Lang::get('lang.disable') !!}
+                    {!! Form::label('tickets__statuses',Lang::get('lang.status').":") !!}&nbsp;&nbsp;
+                    {!! Form::radio('tickets__statuses',1) !!} {!! Lang::get('lang.enable') !!} &nbsp;&nbsp; {!! Form::radio('tickets__statuses',0) !!}  {!! Lang::get('lang.disable') !!}
                 </div>
                 <div class="form-group">
                     <!-- Admin Email -->

@@ -32,8 +32,8 @@ class TicketEditRequest extends Request
                 // 'subject' => 'required',
                 // 'sla_paln' => 'required',
                 // 'tickets__helptopics' => 'required',
-                // 'ticket_source' => 'required',
-                // 'ticket_priority' => 'required',
+                // 'tickets_sources' => 'required',
+                // 'tickets__priorities' => 'required',
         ];
     }
 }

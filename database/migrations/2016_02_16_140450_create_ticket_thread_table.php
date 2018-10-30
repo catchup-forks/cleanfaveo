@@ -12,7 +12,7 @@ class CreateTicketThreadTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_thread', function (Blueprint $table) {
+        Schema::create('tickets__threads', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ticket_id')->unsigned()->nullable()->index('ticket_id_2');
             $table->integer('user_id')->unsigned()->nullable()->index('user_id');
@@ -37,6 +37,6 @@ class CreateTicketThreadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ticket_thread');
+        Schema::drop('tickets__threads');
     }
 }

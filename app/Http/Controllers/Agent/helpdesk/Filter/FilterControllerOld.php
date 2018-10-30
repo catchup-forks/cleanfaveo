@@ -87,7 +87,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->Join('ticket_status', function ($join) {
+                    ->Join('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status')
                         ->whereIn('ticket_status.id', [1, 7]);
                     });
@@ -98,13 +98,13 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->Join('ticket_status', function ($join) {
+                    ->Join('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status')
                                 ->whereIn('ticket_status.state', ['closed']);
                     });
             case '/ticket/myticket':
                     return $table
-                      ->leftJoin('ticket_status', function ($join) {
+                      ->leftJoin('tickets__statuses', function ($join) {
                           $join->on('ticket_status.id', '=', 'tickets.status');
                       })
                     ->orWhere('tickets.assigned_to', '=', Auth::user()->id)
@@ -116,7 +116,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                     ->leftJoin('ticket_status', function ($join) {
+                     ->leftJoin('tickets__statuses', function ($join) {
                          $join->on('ticket_status.id', '=', 'tickets.status');
                      })
                     ->where('tickets.assigned_to', '=', null)
@@ -128,7 +128,7 @@ class FilterControllerOld extends Controller
                 }
 
                   return $table
-                    ->leftJoin('ticket_status', function ($join) {
+                    ->leftJoin('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status');
                     })
                     ->where('tickets.status', '=', 1)
@@ -145,7 +145,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->Join('ticket_status', function ($join) {
+                    ->Join('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status')
                                 ->where('tickets.status', '=', 7);
                     });
@@ -157,7 +157,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->Join('ticket_status', function ($join) {
+                    ->Join('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status')
                                 ->where('tickets.status', '=', 5);
                     });
@@ -169,7 +169,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->Join('ticket_status', function ($join) {
+                    ->Join('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status')
                                 ->where('tickets.status', '=', 1)
                                 ->where('tickets.isanswered', '=', 1);
@@ -181,7 +181,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                     ->leftJoin('ticket_status', function ($join) {
+                     ->leftJoin('tickets__statuses', function ($join) {
                          $join->on('ticket_status.id', '=', 'tickets.status');
                      })
                     ->where('tickets.assigned_to', '>', 0)
@@ -193,7 +193,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                     ->leftJoin('ticket_status', function ($join) {
+                     ->leftJoin('tickets__statuses', function ($join) {
                          $join->on('ticket_status.id', '=', 'tickets.status');
                      })
                     ->where('isanswered', '=', 0)
@@ -205,7 +205,7 @@ class FilterControllerOld extends Controller
                 }
 
                return $table
-                    ->leftJoin('ticket_status', function ($join) {
+                    ->leftJoin('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status');
                     })
                     ->where('tickets.status', '=', 1)
@@ -220,7 +220,7 @@ class FilterControllerOld extends Controller
                 }
 
                 return $table
-                    ->leftJoin('ticket_status', function ($join) {
+                    ->leftJoin('tickets__statuses', function ($join) {
                         $join->on('ticket_status.id', '=', 'tickets.status');
                     })
                     ->where('tickets.status', '=', 1)
@@ -234,17 +234,17 @@ class FilterControllerOld extends Controller
         // if (Auth::user()->role == 'admin') {
         $ticket = new Tickets();
         $tickets = $ticket
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->whereNotNull('title')
                         ->where('ticket_thread.is_internal', '<>', 1);
                     })
                     ->leftJoin('ticket_thread as ticket_thread2', 'ticket_thread2.ticket_id', '=', 'tickets.id')
-                    ->Join('ticket_source', 'ticket_source.id', '=', 'tickets.source')
-                    ->leftJoin('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->Join('tickets_sources', 'ticket_source.id', '=', 'tickets.source')
+                    ->leftJoin('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->leftJoin('users as u', 'u.id', '=', 'tickets.user_id')
                     ->leftJoin('users as u1', 'u1.id', '=', 'tickets.assigned_to')
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
 
                     ->leftJoin('ticket_collaborator', 'ticket_collaborator.ticket_id', '=', 'tickets.id')
                     ->select(
@@ -306,7 +306,7 @@ class FilterControllerOld extends Controller
         $table = $this->table();
 
         return $table->leftJoin('department as dep', 'tickets.dept_id', '=', 'dep.id')
-                ->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
+                ->leftJoin('tickets__statuses', 'tickets.status', '=', 'ticket_status.id')
                 ->where('dep.name', $dept)
                 ->where('ticket_status.name', $status);
     }
@@ -325,11 +325,11 @@ class FilterControllerOld extends Controller
         $user = \DB::table('users')->select('role', 'id')->where('id', '=', $user_id)->first();
         $table = $this->table();
         if ($user->role == 'user') {
-            $table = $table->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
+            $table = $table->leftJoin('tickets__statuses', 'tickets.status', '=', 'ticket_status.id')
                      ->where('tickets.user_id', '=', $user->id)
                      ->where('ticket_status.name', $convert_to_array[3]);
         } else {
-            $table = $table->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
+            $table = $table->leftJoin('tickets__statuses', 'tickets.status', '=', 'ticket_status.id')
                     ->where('tickets.assigned_to', '=', $user->id)
                     ->where('ticket_status.name', $convert_to_array[3]);
         }

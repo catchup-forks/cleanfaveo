@@ -416,8 +416,8 @@ class TicketController extends Controller
 
             $ticket->sla = Input::get('tickets__slaplans');
             $ticket->help_topic_id = Input::get('tickets__helptopics');
-            $ticket->source = Input::get('ticket_source');
-            $ticket->priority_id = Input::get('ticket_priority');
+            $ticket->source = Input::get('tickets_sources');
+            $ticket->priority_id = Input::get('tickets__priorities');
             $ticket->status = Input::get('status');
             $ticket->save();
 

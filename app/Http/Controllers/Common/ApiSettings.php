@@ -81,7 +81,7 @@ class ApiSettings extends Controller
             $ticket = new Tickets();
             $ticketid = $detail->ticket_id;
             $data = $ticket
-                    ->join('ticket_thread', function ($join) use ($ticketid) {
+                    ->join('tickets__threads', function ($join) use ($ticketid) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->where('ticket_thread.ticket_id', '=', $ticketid);
                     })

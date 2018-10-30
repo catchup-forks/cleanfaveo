@@ -7,7 +7,7 @@ use App\BaseModel;
 class Priority extends BaseModel
 {
     public $timestamps = false;
-    protected $table = 'ticket_priority';
+    protected $table = 'tickets__priorities';
     protected $fillable = [
         'id', 'name',
     ];

@@ -745,7 +745,7 @@ return [
     'attachment'                                      => 'Anhang',
     'internal_note'                                   => 'Interne Notiz',
     'this_ticket_is_under_banned_user'                => 'Dieses Ticket befindet sich unter einem gesperrten Benutzer',
-    'ticket_source'                                   => 'Ticketquelle',
+    'tickets_sources'                                   => 'Ticketquelle',
     'are_you_sure_to_ban'                             => 'Bist du sicher, zu verbieten?',
     'whome_do_you_want_to_assign_ticket'              => 'Wen möchten Sie Ticket zuweisen?',
     'are_you_sure_you_want_to_surrender_this_ticket'  => 'Möchten Sie dieses Ticket wirklich abgeben?t',
@@ -913,7 +913,7 @@ return [
     'have_a_ticket'       => 'Habe ein Ticket',
     'check_ticket_status' => 'Prüfe den Ticket Status',
     'choose_a_help_topic' => 'Wählen Sie ein Hilfethema',
-    'ticket_status'       => 'Ticketstatus',
+    'tickets__statuses'       => 'Ticketstatus',
     'post_comment'        => 'Kommentar hinzufügen',
     'plugin'              => 'Plugin',
 
@@ -1041,7 +1041,7 @@ return [
      * Ticket Priority
      * -----------------------------------------------------------------------------------
      */
-    'ticket_priority'                                           => 'Ticketpriorität',
+    'tickets__priorities'                                           => 'Ticketpriorität',
     'priority'                                                  => 'Priorität',
     'priority_desc'                                             => 'Prioritätsbeschreibung',
     'priority_urgency'                                          => 'Priorität der Priorität',

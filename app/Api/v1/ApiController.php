@@ -229,8 +229,8 @@ class ApiController extends Controller
                         'subject'         => 'required',
                         'tickets__slaplans'        => 'required|exists:tickets__slaplans,id',
                         'tickets__helptopics'      => 'required|exists:help_topic,id',
-                        'ticket_source'   => 'required|exists:ticket_source,id',
-                        'ticket_priority' => 'required|exists:ticket_priority,priority_id',
+                        'tickets_sources'   => 'required|exists:ticket_source,id',
+                        'tickets__priorities' => 'required|exists:ticket_priority,priority_id',
             ]);
             if ($v->fails()) {
                 $error = $v->errors();
@@ -303,11 +303,11 @@ class ApiController extends Controller
                         ->where('isanswered', '=', 0)->where('status', '=', 1)->whereNull('assigned_to');
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->join('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->join('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->whereNotNull('title');
                     })
@@ -349,14 +349,14 @@ class ApiController extends Controller
                         ->whereNull('assigned_to')->where('status', '=', 1);
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id');
                     })
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
             if ($user->role == 'agent') {
                 $id = $user->id;
                 $dept[] = $user->primary_dpt;
@@ -402,14 +402,14 @@ class ApiController extends Controller
                         ->where('status', '=', 3)->orWhere('status', '=', 2);
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id');
                     })
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
             if ($user->role == 'agent') {
                 $id = $user->id;
                 $dept[] = $user->primary_dpt;
@@ -677,7 +677,7 @@ class ApiController extends Controller
             }
             $id = $this->request->input('id');
             $result = $this->user
-                    ->rightjoin('ticket_thread', 'ticket_thread.user_id', '=', 'users.id')
+                    ->rightjoin('tickets__threads', 'ticket_thread.user_id', '=', 'users.id')
                     ->select('ticket_thread.id', 'ticket_id', 'user_id', 'poster', 'source', 'title', 'body', 'is_internal', 'format', 'ip_address', 'ticket_thread.created_at', 'ticket_thread.updated_at', 'users.first_name', 'users.last_name', 'users.user_name', 'users.email', 'users.profile_pic')
                     ->where('ticket_id', $id)
                     ->orderBy('ticket_thread.id', 'desc')
@@ -966,14 +966,14 @@ class ApiController extends Controller
                         ->where('status', '=', 1);
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id');
                     })
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
                     ->where('ticket_status.name', 'Open');
             if ($user->role == 'agent') {
                 $id = $user->id;
@@ -1051,14 +1051,14 @@ class ApiController extends Controller
                         ->where('status', '=', 5);
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id');
                     })
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id');
             if ($user->role == 'agent') {
                 $id = $user->id;
                 $dept[] = $user->primary_dpt;
@@ -1113,14 +1113,14 @@ class ApiController extends Controller
             })
                     ->join('users as client', 'tickets.user_id', '=', 'client.id')
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->leftJoin('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->leftJoin('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id');
                     })
-                    ->leftJoin('ticket_attachment', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
+                    ->leftJoin('tickets__attachments', 'ticket_attachment.thread_id', '=', 'ticket_thread.id')
                     ->where('users.id', $id)
                     ->select(
                             'ticket_priority.priority_color as priority_color', \DB::raw('substring_index(group_concat(ticket_thread.title order by ticket_thread.id asc) , ",", 1) as title'), 'tickets.duedate as overdue_date', \DB::raw('count(ticket_attachment.id) as attachment'), \DB::raw('max(ticket_thread.updated_at) as updated_at'), 'client.user_name', 'client.first_name', 'client.last_name', 'client.email', 'client.profile_pic', 'ticket_number', 'tickets.id', 'tickets.created_at', 'department.name as department_name', 'ticket_priority.priority as priotity_name', 'tickets__slaplans.name as sla_plan_name', 'help_topic.topic as help_topic_name', 'ticket_status.name as ticket_status_name'
@@ -1173,11 +1173,11 @@ class ApiController extends Controller
                         ->where('user_id', '=', $id);
             })
                     ->join('department', 'department.id', '=', 'tickets.dept_id')
-                    ->join('ticket_priority', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
+                    ->join('tickets__priorities', 'ticket_priority.priority_id', '=', 'tickets.priority_id')
                     ->join('tickets__slaplans', 'tickets__slaplans.id', '=', 'tickets.sla')
                     ->join('tickets__helptopics', 'help_topic.id', '=', 'tickets.help_topic_id')
-                    ->join('ticket_status', 'ticket_status.id', '=', 'tickets.status')
-                    ->join('ticket_thread', function ($join) {
+                    ->join('tickets__statuses', 'ticket_status.id', '=', 'tickets.status')
+                    ->join('tickets__threads', function ($join) {
                         $join->on('tickets.id', '=', 'ticket_thread.ticket_id')
                         ->whereNotNull('title');
                     })
@@ -1226,10 +1226,10 @@ class ApiController extends Controller
 
             $response = $this->differenciateHelpTopic($query)
                     ->leftJoin('department', 'tickets.dept_id', '=', 'department.id')
-                    ->leftJoin('ticket_priority', 'tickets.priority_id', '=', 'ticket_priority.priority_id')
-                    ->leftJoin('ticket_status', 'tickets.status', '=', 'ticket_status.id')
+                    ->leftJoin('tickets__priorities', 'tickets.priority_id', '=', 'ticket_priority.priority_id')
+                    ->leftJoin('tickets__statuses', 'tickets.status', '=', 'ticket_status.id')
                     ->leftJoin('tickets__slaplans', 'tickets.sla', '=', 'tickets__slaplans.id')
-                    ->leftJoin('ticket_source', 'tickets.source', '=', 'ticket_source.id')
+                    ->leftJoin('tickets_sources', 'tickets.source', '=', 'ticket_source.id')
                     ->leftJoin('tickets__helptopics', 'tickets.help_topic_id', '=', 'help_topic.id');
             //$select = 'users.email','users.user_name','users.first_name','users.last_name','tickets.id','ticket_number','num_sequence','user_id','priority_id','sla','max_open_ticket','captcha','status','lock_by','lock_at','source','isoverdue','reopened','isanswered','is_deleted', 'closed','is_transfer','transfer_at','reopened_at','duedate','closed_at','last_message_at';
 
@@ -1441,12 +1441,12 @@ class ApiController extends Controller
             $sla = $this->slaPlan->select('name', 'id', 'grace_period as sla_duration')->get()->toArray();
             $staff = $this->user->where('role', 'agent')->select('email', 'id')->get()->toArray();
             $team = $this->team->select('name', 'id')->get()->toArray();
-            $priority = \DB::table('ticket_priority')->select('priority', 'priority_id')->get();
+            $priority = \DB::table('tickets__priorities')->select('priority', 'priority_id')->get();
             $helptopic = $this->helptopic->select('topic', 'id')->get()->toArray();
-            $status = \DB::table('ticket_status')->select('name', 'id')->get();
-            $source = \DB::table('ticket_source')->select('name', 'id')->get();
+            $status = \DB::table('tickets__statuses')->select('name', 'id')->get();
+            $source = \DB::table('tickets_sources')->select('name', 'id')->get();
             $statuses = collect($tickets
-                            ->join('ticket_status', 'tickets.status', '=', 'ticket_status.id')
+                            ->join('tickets__statuses', 'tickets.status', '=', 'ticket_status.id')
                             ->select('ticket_status.name as status', \DB::raw('COUNT(tickets.id) as count'))
                             ->groupBy('ticket_status.id')
                             ->get())->transform(function ($item) {

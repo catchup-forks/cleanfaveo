@@ -12,7 +12,7 @@ class CreateTicketSourceTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_source', function (Blueprint $table) {
+        Schema::create('tickets_sources', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('value');
@@ -26,6 +26,6 @@ class CreateTicketSourceTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ticket_source');
+        Schema::drop('tickets_sources');
     }
 }

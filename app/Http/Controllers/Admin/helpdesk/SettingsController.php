@@ -526,7 +526,7 @@ class SettingsController extends Controller
             $alerts = $alert->whereId('1')->first();
             /* Insert Checkbox to DB */
             $alerts->assignment_status = $request->input('assignment_status');
-            $alerts->ticket_status = $request->input('ticket_status');
+            $alerts->ticket_status = $request->input('tickets__statuses');
             $alerts->overdue_department_member = $request->input('overdue_department_member');
             $alerts->sql_error = $request->input('sql_error');
             $alerts->excessive_failure = $request->input('excessive_failure');
@@ -613,7 +613,7 @@ class SettingsController extends Controller
     {
         try {
             /* fetch the values of company from company table */
-            $statuss = \DB::table('ticket_status')->get();
+            $statuss = \DB::table('tickets__statuses')->get();
             /* Direct to Company Settings Page */
             return view('themes.default1.admin.helpdesk.settings.status', compact('statuss'));
         } catch (Exception $e) {
@@ -633,7 +633,7 @@ class SettingsController extends Controller
     {
         try {
             /* fetch the values of company from company table */
-            $status = \DB::table('ticket_status')->where('id', '=', $id)->first();
+            $status = \DB::table('tickets__statuses')->where('id', '=', $id)->first();
             /* Direct to Company Settings Page */
             return view('themes.default1.admin.helpdesk.settings.status-edit', compact('status'));
         } catch (Exception $e) {

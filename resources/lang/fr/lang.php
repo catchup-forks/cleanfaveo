@@ -1050,7 +1050,7 @@ return [
     'attachment'                                      => 'Pièce jointe',
     'internal_note'                                   => 'Note interne',
     'this_ticket_is_under_banned_user'                => 'Ce ticket appartient à un utilisateur banni',
-    'ticket_source'                                   => 'Source du ticket',
+    'tickets_sources'                                   => 'Source du ticket',
     'are_you_sure_to_ban'                             => 'Êtes-vous sûr de bannir?',
     'whome_do_you_want_to_assign_ticket'              => 'A qui voulez-vous assigner le ticket',
     'are_you_sure_you_want_to_surrender_this_ticket'  => 'Aêts-vous sûr de vouloir abandonner ce ticket',
@@ -1316,7 +1316,7 @@ return [
     'have_a_ticket'                                                                    => 'Vous avez un ticket',
     'check_ticket_status'                                                              => 'Vérifier le statut du ticket',
     'choose_a_help_topic'                                                              => 'Choisissez une branche de support',
-    'ticket_status'                                                                    => 'Statut ticket',
+    'tickets__statuses'                                                                    => 'Statut ticket',
     'post_comment'                                                                     => 'Poster commentaire',
     'plugin'                                                                           => 'Plugin',
     'edit_profile'                                                                     => 'Modifier profil',
@@ -1448,7 +1448,7 @@ return [
      * Ticket Priority
      * -----------------------------------------------------------------------------------
      */
-    'ticket_priority'                                           => 'Priorité du ticket',
+    'tickets__priorities'                                           => 'Priorité du ticket',
     'priority'                                                  => 'Priorité',
     'priority_desc'                                             => 'Description de la priorité',
     'priority_urgency'                                          => 'Urgence de la priorité',

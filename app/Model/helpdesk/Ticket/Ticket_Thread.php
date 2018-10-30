@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket_Thread extends Model
 {
-    protected $table = 'ticket_thread';
+    protected $table = 'tickets__threads';
     protected $fillable = [
         'id', 'ticket_id', 'staff_id', 'user_id', 'thread_type', 'poster', 'source', 'is_internal', 'title', 'body', 'format', 'ip_address', 'created_at', 'updated_at',
     ];

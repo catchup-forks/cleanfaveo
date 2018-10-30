@@ -12,7 +12,7 @@ class Alert extends BaseModel
     /* Set fillable fields in table */
     protected $fillable = [
 
-        'id', 'ticket_status', 'ticket_admin_email', 'ticket_department_manager',
+        'id', 'tickets__statuses', 'ticket_admin_email', 'ticket_department_manager',
         'ticket_organization_accmanager', 'message_status', 'message_last_responder', 'message_assigned_agent',
         'message_department_manager', 'message_organization_accmanager', 'internal_status', 'internal_last_responder',
         'internal_assigned_agent', 'internal_department_manager', 'assignment_status', 'assignment_assigned_agent',

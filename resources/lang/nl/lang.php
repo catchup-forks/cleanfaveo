@@ -1112,7 +1112,7 @@ return [
     'attachment'                                     => 'Bijlage',
     'internal_note'                                  => 'Interne notitie',
     'this_ticket_is_under_banned_user'               => 'Dit ticket is van een geblokkeerde gebruiker',
-    'ticket_source'                                  => 'Ticket aangemaakt',
+    'tickets_sources'                                  => 'Ticket aangemaakt',
     'are_you_sure_to_ban'                            => 'Weet je zeker dat je wil blokkeren',
     'whome_do_you_want_to_assign_ticket'             => 'Aan wie wil je het ticket toewijzen',
     'are_you_sure_you_want_to_surrender_this_ticket' => 'Weet je zeker dat je dit ticket wil opgeven',
@@ -1372,7 +1372,7 @@ return [
     'have_a_ticket'                                                                    => 'Heb je een ticket',
     'check_ticket_status'                                                              => 'Bekijk ticket status',
     'choose_a_help_topic'                                                              => 'Kies een help-onderwerp',
-    'ticket_status'                                                                    => 'Ticket status',
+    'tickets__statuses'                                                                    => 'Ticket status',
     'post_comment'                                                                     => 'Plaats reactie',
     'plugin'                                                                           => 'Plugin',
     'edit_profile'                                                                     => 'Bewerk profiel',
@@ -1495,7 +1495,7 @@ return [
      * Ticket Priority
      * -----------------------------------------------------------------------------------
      */
-    'ticket_priority'               => 'Ticket prioriteit',
+    'tickets__priorities'               => 'Ticket prioriteit',
     'priority'                      => 'Prioriteit',
     'priority_desc'                 => 'Prioriteits beschrijving',
     'priority_urgency'              => 'Prioriteits urgentie',

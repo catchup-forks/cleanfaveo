@@ -12,7 +12,7 @@ class AlterAttachmentTable extends Migration
      */
     public function up()
     {
-        Schema::table('ticket_attachment', function (Blueprint $table) {
+        Schema::table('tickets__attachments', function (Blueprint $table) {
             $table->string('driver');
             $table->string('path');
         });
@@ -25,7 +25,7 @@ class AlterAttachmentTable extends Migration
      */
     public function down()
     {
-        Schema::table('ticket_attachment', function (Blueprint $table) {
+        Schema::table('tickets__attachments', function (Blueprint $table) {
             $table->string('driver');
             $table->string('path');
         });
